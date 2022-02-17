@@ -1,7 +1,7 @@
 import { Schedule } from "@components/schedule"
 import { TSubjectId } from "@types"
 import type { NextPage } from "next"
-import { useState, Fragment } from "react"
+import { useState, Fragment, useEffect } from "react"
 import { MyAccordion } from "@components/common/Accordion"
 import { Field, Form, Formik } from "formik"
 import { useWindowDimensions } from "@utils/useWindowDimensions"
@@ -16,7 +16,7 @@ const scheduleWidth = (width: number) => {
   if (width > LG) {
     return 650
   } else if (width > MD) {
-    return 450
+    return 475
   } else {
     return 550
   }
@@ -38,13 +38,13 @@ interface IInitialFormValues {
   subjects: TSubjectId[]
 }
 
-const intitalFormValues: IInitialFormValues = {
-  subjects: ["GAT", "PAT1", "PAT3"],
-}
-
 const Home: NextPage = () => {
   const { width } = useWindowDimensions()
   const [waiting, setWaiting] = useState(false)
+
+  const intitalFormValues: IInitialFormValues = {
+    subjects: ["GAT", "PAT1", "PAT3"],
+  }
 
   return (
     <Formik
@@ -52,9 +52,11 @@ const Home: NextPage = () => {
       onSubmit={async (values) => {
         if (waiting) return
 
-        // window.localStorage.setItem("room", room)
+        // window.localStorage.setItem("subjects", JSON.stringify(values.subjects))
 
-        const imgUrl = `/api/capture?data=${JSON.stringify(values.subjects)}`
+        let r = (Math.random() + 1).toString(36).substring(10)
+
+        const imgUrl = `/api/capture?&r=${r}&data=${encodeURI(JSON.stringify(values.subjects))}`
 
         setWaiting(true)
 
@@ -140,7 +142,7 @@ const Home: NextPage = () => {
 
                 <button
                   type="submit"
-                  className="absolute right-4 top-4 flex space-x-2 rounded-full bg-[#7774ff] px-6 py-2 transition-transform hover:scale-105"
+                  className="absolute right-4 top-4 z-50 flex space-x-2 rounded-full bg-[#7774ff] px-6 py-2 transition-transform hover:scale-105"
                 >
                   <SaveIcon className="h-5 w-5" />
                   <span>{waiting ? <Ellipsis className="w-5" /> : "บันทึกรูป"}</span>

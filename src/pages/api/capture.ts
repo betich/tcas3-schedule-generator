@@ -7,16 +7,16 @@ type Data = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   const {
-    query: { data, width, height },
+    query: { data, width, height, r },
   } = req
 
   const _width = isNaN(+width) ? 2388 : +width
   const _height = isNaN(+height) ? 1668 : +height
 
   const file = await screenshot(
-    `http${(req.headers.host as string).includes("localhost" ? "" : "s")}://${
+    `http${(req.headers.host as string).includes("localhost") ? "" : "s"}://${
       req.headers.host
-    }/schedule?data=${data}&width=${_width}&height=${_height}`,
+    }/schedule?data=${decodeURIComponent(data as string)}&width=${_width}&height=${_height}&r=${r}`,
     _width,
     _height
   )
