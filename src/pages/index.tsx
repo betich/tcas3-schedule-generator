@@ -39,26 +39,7 @@ interface IInitialFormValues {
 }
 
 const intitalFormValues: IInitialFormValues = {
-  subjects: [
-    "GAT",
-    "PAT1",
-    "PAT3",
-    "PAT2",
-    "PAT5",
-    "PAT7",
-    "PAT4",
-    "PAT6",
-    "GEN09",
-    "GEN29",
-    "GEN39",
-    "GEN49",
-    "GEN59",
-    "GEN69",
-    "GEN19",
-    "MED1",
-    "MED2",
-    "MED3",
-  ],
+  subjects: ["GAT", "PAT1", "PAT3"],
 }
 
 const Home: NextPage = () => {
@@ -90,14 +71,14 @@ const Home: NextPage = () => {
           if (inapp.browser === "line" || inapp.browser === "messenger" || inapp.browser === "facebook") {
             const a = document.createElement("a")
             a.href = imgUrl
-            a.download = `schedule.jpg`
+            a.download = `tcas-schedule.jpg`
             document.body.appendChild(a)
             a.click()
             a.remove()
           } else {
             const a = document.createElement("a")
             a.href = window.URL.createObjectURL(await res.blob())
-            a.download = `schedule.jpg`
+            a.download = `tcas-schedule.jpg`
             document.body.appendChild(a)
             a.click()
             a.remove()

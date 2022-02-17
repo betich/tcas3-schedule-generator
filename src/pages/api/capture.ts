@@ -14,7 +14,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const _height = isNaN(+height) ? 1668 : +height
 
   const file = await screenshot(
-    `http://${req.headers.host}/schedule?data=${data}&width=${_width}&height=${_height}`,
+    `http${(req.headers.host as string).includes("localhost" ? "" : "s")}://${
+      req.headers.host
+    }/schedule?data=${data}&width=${_width}&height=${_height}`,
     _width,
     _height
   )
