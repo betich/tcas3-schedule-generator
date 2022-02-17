@@ -1,0 +1,85 @@
+$px: 75;
+$py-head: 100;
+$py-body: 85;
+
+.page {
+  font-size: calc(var(--width) / 115);
+  // font-size: calc(var(--width) / 150);
+  position: relative;
+  background-color: #fafafa;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.body-content {
+  // position: absolute;
+  // top: calc(var(--width) / 5.25);
+  padding-top: calc(var(--width) / 20);
+  // left: 0;
+  width: 100%;
+}
+
+.credit-content {
+  position: absolute;
+  top: calc(var(--width) / 40);
+  right: calc(var(--width) / 100);
+  text-align: right;
+  font-size: calc(var(--width) / 110);
+  // font-size: calc(var(--width) / 145);
+}
+
+.heading-text {
+  font-size: calc(var(--width) / 100);
+  margin: 0 auto;
+  padding-top: calc(var(--width) / 100);
+  padding-bottom: calc(var(--width) / 70);
+  width: calc(var(--width) / 2.3);
+  font-weight: 500;
+
+  > .text {
+    text-align: right;
+  }
+}
+
+.day-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: calc(var(--width) / 1.775);
+  gap: calc(var(--width) / 60);
+}
+
+.day-card-list > .day-card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: calc(var(--width) / 1080 * 7.5);
+  width: calc(var(--width) / 3.7);
+  height: 100%;
+
+  > .divider {
+    color: #cccccc;
+  }
+
+  > .day-header {
+    padding: calc(var(--width) / $py-head) calc(var(--width) / $px);
+  }
+
+  > .day-schedule-list {
+    padding: calc(var(--width) / $py-body) calc(var(--width) / $px) calc(var(--width) / 150) calc(var(--width) / $px);
+  }
+}
+
+.day-card > .day-schedule-list {
+  display: flex;
+  flex-direction: column;
+
+  > .schedule-text-container {
+    display: flex;
+    padding-bottom: calc(var(--width) / 150);
+  }
+
+  > .schedule-text-container > .time {
+    padding-right: calc(var(--width) / 150);
+    color: #4845da;
+  }
+}
