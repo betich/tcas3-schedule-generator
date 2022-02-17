@@ -10,6 +10,7 @@ import { Checkbox } from "@components/common/Checkbox"
 import { GatPatSubjectIds, MedSubjectIds, SubjectNames } from "@utils/subjects"
 import { SaveIcon } from "@heroicons/react/outline"
 import { Ellipsis } from "@components/common/Ellipsis"
+import { useLocalStorage } from "@utils/useLocalStorage"
 const InApp = require("detect-inapp")
 
 const scheduleWidth = (width: number) => {
@@ -41,9 +42,10 @@ interface IInitialFormValues {
 const Home: NextPage = () => {
   const { width } = useWindowDimensions()
   const [waiting, setWaiting] = useState(false)
+  const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("subjects", ["GAT", "PAT1", "PAT3"])
 
   const intitalFormValues: IInitialFormValues = {
-    subjects: ["GAT", "PAT1", "PAT3"],
+    subjects: subjects,
   }
 
   return (
@@ -53,6 +55,7 @@ const Home: NextPage = () => {
         if (waiting) return
 
         // window.localStorage.setItem("subjects", JSON.stringify(values.subjects))
+        setSubject(values.subjects)
 
         let r = (Math.random() + 1).toString(36).substring(10)
 
@@ -110,7 +113,7 @@ const Home: NextPage = () => {
             <div className="mt-4 flex flex-col space-y-4">
               <Form>
                 <MyAccordion header="GAT / PAT" id="GATPAT" defaultExpanded>
-                  <fieldset className="relative flex flex-col space-y-2" role="group" aria-labelledby="GATPAT">
+                  <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="GATPAT">
                     {GatPatSubjectIds.map((subject) => {
                       return (
                         <Fragment key={subject}>
@@ -123,7 +126,7 @@ const Home: NextPage = () => {
                 </MyAccordion>
 
                 <MyAccordion header="วิชาสามัญ / กสพท." id="MED" defaultExpanded>
-                  <fieldset className="relative flex flex-col space-y-2" role="group" aria-labelledby="MED">
+                  <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="MED">
                     {MedSubjectIds.map((subject) => {
                       return (
                         <Fragment key={subject}>
