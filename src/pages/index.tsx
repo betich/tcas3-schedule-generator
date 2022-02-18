@@ -150,7 +150,7 @@ const Home: NextPage = () => {
                 </MyAccordion>
 
                 <MyAccordion header="การตกแต่ง" id="Custom" defaultExpanded>
-                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="theme">
+                  <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="theme">
                     <>
                       <legend className="mb-6" id="theme">
                         Background

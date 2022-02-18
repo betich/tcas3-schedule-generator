@@ -13,6 +13,7 @@ $py-body: 85;
   align-items: center;
   font-family: "Inter", "Noto Sans Thai", "SF Pro Display", "Sukhumvit Set", "Kanit", sans-serif;
   overflow: hidden;
+  width: 100%;
 }
 
 .body-content {
@@ -22,7 +23,8 @@ $py-body: 85;
   // left: 0;
   position: relative;
   z-index: 5;
-  width: 100%;
+  width: calc(var(--width) / var(--container-width));
+  margin: 0 auto;
 }
 
 .credit-content {
@@ -36,14 +38,13 @@ $py-body: 85;
 
 .heading-text {
   font-size: calc(var(--width) / 100);
-  margin: 0 auto;
   padding-top: calc(var(--width) / 100);
   padding-bottom: calc(var(--width) / 70);
-  width: calc(var(--width) / 2.3);
+  // width: calc(var(--width) / var(--container-width));
   font-weight: 500;
 
   > .text {
-    text-align: right;
+    text-align: var(--text-align);
   }
 }
 
@@ -51,7 +52,7 @@ $py-body: 85;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: calc(var(--width) / var(--container-width));
+  // width: calc(var(--width) / var(--container-width));
   gap: calc(var(--width) / 60);
 }
 
@@ -81,12 +82,15 @@ $py-body: 85;
   flex-direction: column;
 
   > .schedule-text-container {
-    display: flex;
+    // display: flex;
+    display: grid;
+    grid-template-columns: 1fr 3.5fr;
+    grid-gap: calc(var(--width) / ((var(--gap) + 200)));
     padding-bottom: calc(var(--width) / 150);
   }
 
   > .schedule-text-container > .time {
-    padding-right: calc(var(--width) / 150);
+    // padding-right: calc(var(--width) / 150);
     color: var(--time-color);
   }
 }
