@@ -36,17 +36,15 @@ export const Schedule: FC<{
 }> = ({ data, width = 2388, className }) => {
   const mappedSubjects: TGroupedSubjects = groupSubjects(data.subjects)
 
-  console.log(data.subjects.length === 1)
-
   return (
     <div
       style={{
         ["--width" as string]: `${width}px`,
         ["--font-size" as string]: data.font === "large" ? 110 : 165,
         ["--container-width" as string]: data.font === "large" ? 1.8 : 2.4,
-        ["--card-width" as string]: data.font === "large" ? 3.75 : 5,
+        ["--card-width" as string]: data.font === "large" ? 3.715 : 5,
         ["--gap" as string]: data.font === "large" ? -10 : 1000,
-        ["--text-align" as string]: data.subjects.length === 1 ? "left" : "right",
+        ["--text-align" as string]: Object.keys(mappedSubjects).length === 1 ? "left" : "right",
         height: width * 0.6984,
         width,
       }}
@@ -68,7 +66,7 @@ export const Schedule: FC<{
           }}
           className="absolute top-0 left-0"
         >
-          <Image src="/assets/studybg.png" layout="fill" />
+          <Image priority={true} src="/assets/studybg.png" layout="fill" />
         </div>
       )}
       <div className={styles["credit-content"]}>

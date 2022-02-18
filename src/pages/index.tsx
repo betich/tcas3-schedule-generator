@@ -12,6 +12,7 @@ import { SaveIcon } from "@heroicons/react/outline"
 import { Ellipsis } from "@components/common/Ellipsis"
 import { useLocalStorage } from "@utils/useLocalStorage"
 import { Radio } from "@components/common/Radio"
+import { PresetButton } from "@components/common/PresetButton"
 const InApp = require("detect-inapp")
 
 const scheduleWidth = (width: number) => {
@@ -102,7 +103,7 @@ const Home: NextPage = () => {
       {({ values }) => (
         <Form>
           <main className="relative flex min-h-screen flex-col bg-[#15151C] font-display text-white md:flex-row">
-            <header className="order-last flex flex-col px-12 pt-[300px] pb-12 md:order-first md:h-screen md:w-[550px] md:overflow-y-auto md:pt-12">
+            <header className="order-last flex flex-col px-12 pt-[300px] pb-16 md:order-first md:h-screen md:w-[550px] md:overflow-y-auto md:pt-12">
               <h1 className="text-xl leading-relaxed">
                 ระบบสร้างตารางสอบ
                 <br />
@@ -118,6 +119,76 @@ const Home: NextPage = () => {
               </h1>
               <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 14 กุมภาพันธ์ 2565</p>
               <div className="mt-4 flex flex-col space-y-4">
+                <MyAccordion header="การตกแต่ง" id="Custom">
+                  <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="theme">
+                    <>
+                      <legend className="mb-6" id="theme">
+                        Background
+                      </legend>
+                      <Radio id="none" name="theme" value="none" />
+                      <label htmlFor="none">ไม่มี Background</label>
+                      <Radio id="balls" name="theme" value="balls" />
+                      <label htmlFor="balls">Balls </label>
+                      <Radio id="study" name="theme" value="study" />
+                      <label htmlFor="study">School & Study</label>
+                    </>
+                  </fieldset>
+                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="font">
+                    <>
+                      <legend className="mb-6" id="font">
+                        ขนาด Font
+                      </legend>
+                      <Radio id="normal" name="font" value="normal" />
+                      <label htmlFor="normal">ปกติ (สำหรับตั้งเป็นวอลเปเปอร์ของ iPad)</label>
+                      <Radio id="large" name="font" value="large" />
+                      <label htmlFor="large">ใหญ่</label>
+                    </>
+                  </fieldset>
+                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="mode">
+                    <>
+                      <legend className="mb-6" id="mode">
+                        สีกระดาษ
+                      </legend>
+                      <Radio id="light" name="mode" value="light" />
+                      <label htmlFor="light">Light Mode</label>
+                      <Radio id="dark" name="mode" value="dark" />
+                      <label htmlFor="dark">Dark Mode</label>
+                    </>
+                  </fieldset>
+                </MyAccordion>
+
+                <MyAccordion header="Presets" id="presets" defaultExpanded>
+                  <fieldset
+                    className="relative flex flex-wrap text-sm md:flex-row"
+                    role="group"
+                    aria-labelledby="presets"
+                  >
+                    <PresetButton
+                      subjects={values.subjects}
+                      activates={[
+                        "GEN69",
+                        "GEN49",
+                        "GEN09",
+                        "GEN19",
+                        "GEN39",
+                        "GEN29",
+                        "GEN59",
+                        "MED1",
+                        "MED2",
+                        "MED3",
+                      ]}
+                    >
+                      แพทย์
+                    </PresetButton>
+                    <PresetButton subjects={values.subjects} activates={["GAT", "PAT1", "PAT3"]}>
+                      วิศวะฯ
+                    </PresetButton>
+                    <PresetButton subjects={values.subjects} activates={["GAT", "PAT1"]}>
+                      บัญชี
+                    </PresetButton>
+                  </fieldset>
+                </MyAccordion>
+
                 <MyAccordion header="GAT / PAT" id="GATPAT" defaultExpanded>
                   <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="GATPAT">
                     {GatPatSubjectIds.map((subject) => {
@@ -148,44 +219,6 @@ const Home: NextPage = () => {
                     })}
                   </fieldset>
                 </MyAccordion>
-
-                <MyAccordion header="การตกแต่ง" id="Custom" defaultExpanded>
-                  <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="theme">
-                    <>
-                      <legend className="mb-6" id="theme">
-                        Background
-                      </legend>
-                      <Radio id="none" name="theme" value="none" />
-                      <label htmlFor="none">ไม่มี Background</label>
-                      <Radio id="balls" name="theme" value="balls" />
-                      <label htmlFor="balls">Balls </label>
-                      <Radio id="study" name="theme" value="study" />
-                      <label htmlFor="study">School & Study</label>
-                    </>
-                  </fieldset>
-                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="font">
-                    <>
-                      <legend className="mb-6" id="font">
-                        ขนาด Font
-                      </legend>
-                      <Radio id="normal" name="font" value="normal" />
-                      <label htmlFor="normal">ปกติ (สามารถตั้งเป็น portrait mode ได้ใน iPad)</label>
-                      <Radio id="large" name="font" value="large" />
-                      <label htmlFor="large">ใหญ่</label>
-                    </>
-                  </fieldset>
-                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="mode">
-                    <>
-                      <legend className="mb-6" id="mode">
-                        สีกระดาษ
-                      </legend>
-                      <Radio id="light" name="mode" value="light" />
-                      <label htmlFor="light">Light Mode</label>
-                      <Radio id="dark" name="mode" value="dark" />
-                      <label htmlFor="dark">Dark Mode</label>
-                    </>
-                  </fieldset>
-                </MyAccordion>
               </div>
             </header>
             <section className="fixed order-first flex w-full items-center justify-center bg-gray-100 py-4 shadow-sm md:relative md:order-last md:py-0">
@@ -207,6 +240,20 @@ const Home: NextPage = () => {
                 <span>{waiting ? <Ellipsis className="w-5" /> : "บันทึกรูป"}</span>
               </button>
             </section>
+            <a
+              href="https://github.com/betich/tcas3-schedule-generator"
+              target="_blank"
+              rel="noreferrer"
+              className="absolute right-8 bottom-4 flex items-center space-x-2 text-sm text-gray-400 underline hover:no-underline"
+            >
+              <span>View on GitHub</span>
+              <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"
+                ></path>
+              </svg>
+            </a>
           </main>
         </Form>
       )}
