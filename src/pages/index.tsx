@@ -79,6 +79,15 @@ const Home: NextPage = () => {
         })
 
         if (res.ok) {
+          // @ts-ignore
+          window.gtag("event", "generate_schedule", {
+            event_category: "generate_schedule",
+            event_label: `subjects: ${values.subjects.join(", ")}`,
+            subjects: values.subjects.join(", "),
+            theme: values.theme,
+            mode: values.mode,
+            font: values.font,
+          })
           const inapp = new InApp(navigator.userAgent || navigator.vendor)
           if (inapp.browser === "line" || inapp.browser === "messenger" || inapp.browser === "facebook") {
             const a = document.createElement("a")
