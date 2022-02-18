@@ -1,3 +1,19 @@
+import { TSubjectObj } from "@types"
+
+export function dateSort(a: TSubjectObj, b: TSubjectObj) {
+  // const _dateSortOut = dateSortFunc(a.date, b.date)
+  const [_m1, _d1] = a.date.split("/")
+  const [_m2, _d2] = b.date.split("/")
+
+  const [_min1, _s1] = a.from.split(".")
+  const [_min2, _s2] = b.from.split(".")
+
+  const compareDate1 = new Date(new Date().getFullYear(), +_m1, +_d1, 0, +_min1, +_s1, 0)
+  const compareDate2 = new Date(new Date().getFullYear(), +_m2, +_d2, 0, +_min2, +_s2, 0)
+
+  return +compareDate1 - +compareDate2
+}
+
 export function dateSortFunc(a: string, b: string) {
   const [_m1, _d1] = a.split("/")
   const [_m2, _d2] = b.split("/")

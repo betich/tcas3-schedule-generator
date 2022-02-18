@@ -1,11 +1,11 @@
 import { TSubjectId, TSubjectObj } from "@types"
-import { dateSortFunc, timeSortFunc } from "./sortTime"
+import { dateSort, dateSortFunc, timeSortFunc } from "./sortTime"
 import { SubjectMap } from "./subjects"
 
 /*
 {
 	[date]: [
-		eifjei
+		{title: "eee"}
 	]
 ]
 */
@@ -14,9 +14,7 @@ import { SubjectMap } from "./subjects"
 export const groupSubjects = (subjects: TSubjectId[]) => {
   const mappedSubjects: Record<string, TSubjectObj[]> = subjects
     .map((s) => SubjectMap[s])
-    .sort((a, b) => {
-      return dateSortFunc(a.date, b.date)
-    })
+    .sort(dateSort)
     .reduce((prev: any, curr) => {
       const newObj = { ...prev }
 
@@ -28,12 +26,6 @@ export const groupSubjects = (subjects: TSubjectId[]) => {
 
       return newObj
     }, {})
-
-  Object.keys(mappedSubjects).forEach((e) => {
-    mappedSubjects[e] = mappedSubjects[e].sort((a, b) => {
-      return timeSortFunc(a.from, b.from)
-    })
-  })
 
   return mappedSubjects
 }
