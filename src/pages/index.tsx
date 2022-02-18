@@ -41,7 +41,7 @@ const Home: NextPage = () => {
   const [waiting, setWaiting] = useState(false)
   const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("subjects", ["GAT", "PAT1", "PAT3"])
   const [theme, setTheme] = useLocalStorage<"none" | "balls" | "study">("theme", "study")
-  const [font, setFont] = useLocalStorage<"normal" | "large">("font", "normal")
+  const [font, setFont] = useLocalStorage<"normal" | "large">("font", "large")
   const [mode, setMode] = useLocalStorage<"light" | "dark">("mode", "light")
 
   const intitalFormValues: IScheduleData = {
