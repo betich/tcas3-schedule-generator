@@ -20,7 +20,7 @@ const scheduleWidth = (width: number) => {
   } else if (width > MD) {
     return 475
   } else {
-    return 550
+    return 350
   }
 }
 
@@ -100,24 +100,24 @@ const Home: NextPage = () => {
       }}
     >
       {({ values }) => (
-        <main className="relative flex min-h-screen flex-col bg-[#15151C] font-display text-white md:flex-row">
-          <header className="order-last flex flex-col p-12 md:order-first md:h-screen md:w-[550px] md:overflow-y-auto">
-            <h1 className="text-xl leading-relaxed">
-              ระบบสร้างตารางสอบ
-              <br />
-              TCAS รอบ 3{" "}
-              <a
-                className="underline hover:no-underline"
-                target="_blank"
-                rel="noreferrer"
-                href="https://twitter.com/hashtag/dek65"
-              >
-                #DEK65
-              </a>
-            </h1>
-            <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 14 กุมภาพันธ์ 2565</p>
-            <div className="mt-4 flex flex-col space-y-4">
-              <Form>
+        <Form>
+          <main className="relative flex min-h-screen flex-col bg-[#15151C] font-display text-white md:flex-row">
+            <header className="order-last flex flex-col px-12 pt-[300px] pb-12 md:order-first md:h-screen md:w-[550px] md:overflow-y-auto md:pt-12">
+              <h1 className="text-xl leading-relaxed">
+                ระบบสร้างตารางสอบ
+                <br />
+                TCAS รอบ 3{" "}
+                <a
+                  className="underline hover:no-underline"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://twitter.com/hashtag/dek65"
+                >
+                  #DEK65
+                </a>
+              </h1>
+              <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 14 กุมภาพันธ์ 2565</p>
+              <div className="mt-4 flex flex-col space-y-4">
                 <MyAccordion header="GAT / PAT" id="GATPAT" defaultExpanded>
                   <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="GATPAT">
                     {GatPatSubjectIds.map((subject) => {
@@ -186,30 +186,29 @@ const Home: NextPage = () => {
                     </>
                   </fieldset>
                 </MyAccordion>
-
-                <button
-                  type="submit"
-                  className="absolute right-4 top-4 z-50 flex space-x-2 rounded-full bg-[#7774ff] px-6 py-2 transition-transform hover:scale-105"
-                >
-                  <SaveIcon className="h-5 w-5" />
-                  <span>{waiting ? <Ellipsis className="w-5" /> : "บันทึกรูป"}</span>
-                </button>
-              </Form>
-            </div>
-          </header>
-          <div className="order-first flex w-full items-center justify-center bg-gray-100 shadow-sm md:order-last">
-            <Schedule
-              className="rounded-md border border-gray-100 shadow-md transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-lg"
-              width={scheduleWidth(width)}
-              data={{
-                subjects: values.subjects,
-                theme: values.theme,
-                font: values.font,
-                mode: values.mode,
-              }}
-            />
-          </div>
-        </main>
+              </div>
+            </header>
+            <section className="fixed order-first flex w-full items-center justify-center bg-gray-100 py-4 shadow-sm md:relative md:order-last md:py-0">
+              <Schedule
+                className="rounded-md border border-gray-100 shadow-md transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-lg"
+                width={scheduleWidth(width)}
+                data={{
+                  subjects: values.subjects,
+                  theme: values.theme,
+                  font: values.font,
+                  mode: values.mode,
+                }}
+              />
+              <button
+                type="submit"
+                className="fixed right-4 top-4 z-50 flex space-x-2 rounded-full bg-[#7774ff] px-6 py-2 transition-transform hover:scale-105"
+              >
+                <SaveIcon className="h-5 w-5" />
+                <span>{waiting ? <Ellipsis className="w-5" /> : "บันทึกรูป"}</span>
+              </button>
+            </section>
+          </main>
+        </Form>
       )}
     </Formik>
   )
