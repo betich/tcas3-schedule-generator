@@ -40,15 +40,15 @@ const Home: NextPage = () => {
   const { width } = useWindowDimensions()
   const [waiting, setWaiting] = useState(false)
   const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("subjects", ["GAT", "PAT1", "PAT3"])
-  const [theme, setTheme] = useLocalStorage<"none" | "balls" | "study">("theme", "study")
-  const [font, setFont] = useLocalStorage<"normal" | "large">("font", "large")
-  const [mode, setMode] = useLocalStorage<"light" | "dark">("mode", "light")
+  // const [theme, setTheme] = useLocalStorage<"none" | "balls" | "study">("theme", "study")
+  // const [font, setFont] = useLocalStorage<"normal" | "large">("font", "large")
+  // const [mode, setMode] = useLocalStorage<"light" | "dark">("mode", "light")
 
   const intitalFormValues: IScheduleData = {
     subjects: subjects,
-    theme: theme,
-    font: font,
-    mode: mode,
+    theme: "study",
+    font: "large",
+    mode: "light",
   }
 
   return (
@@ -59,9 +59,9 @@ const Home: NextPage = () => {
 
         // window.localStorage.setItem("subjects", JSON.stringify(values.subjects))
         setSubject(values.subjects)
-        setTheme(values.theme)
-        setFont(values.font)
-        setMode(values.mode)
+        // setTheme(values.theme)
+        // setFont(values.font)
+        // setMode(values.mode)
 
         let r = (Math.random() + 1).toString(36).substring(10)
 
