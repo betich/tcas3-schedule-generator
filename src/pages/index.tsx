@@ -11,6 +11,7 @@ import { GatPatSubjectIds, MedSubjectIds, SubjectNames } from "@utils/subjects"
 import { SaveIcon } from "@heroicons/react/outline"
 import { Ellipsis } from "@components/common/Ellipsis"
 import { useLocalStorage } from "@utils/useLocalStorage"
+import { Radio } from "@components/common/Radio"
 const InApp = require("detect-inapp")
 
 const scheduleWidth = (width: number) => {
@@ -37,15 +38,21 @@ const checkDisabled = (subject: TSubjectId, currSubjects: TSubjectId[]) => {
 
 interface IInitialFormValues {
   subjects: TSubjectId[]
+  font: "normal" | "large"
+  theme: "none" | "balls" | "study"
 }
 
 const Home: NextPage = () => {
   const { width } = useWindowDimensions()
   const [waiting, setWaiting] = useState(false)
   const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("subjects", ["GAT", "PAT1", "PAT3"])
+  const [theme, setTheme] = useLocalStorage<"none" | "balls" | "study">("theme", "study")
+  const [font, setFont] = useLocalStorage<"normal" | "large">("font", "normal")
 
   const intitalFormValues: IInitialFormValues = {
     subjects: subjects,
+    theme: theme,
+    font: font,
   }
 
   return (
@@ -56,10 +63,12 @@ const Home: NextPage = () => {
 
         // window.localStorage.setItem("subjects", JSON.stringify(values.subjects))
         setSubject(values.subjects)
+        setTheme(values.theme)
+        setFont(values.font)
 
         let r = (Math.random() + 1).toString(36).substring(10)
 
-        const imgUrl = `/api/capture?&r=${r}&data=${encodeURI(JSON.stringify(values.subjects))}`
+        const imgUrl = `/api/capture?&r=${r}&data=${encodeURI(JSON.stringify(values))}`
 
         setWaiting(true)
 
@@ -112,6 +121,33 @@ const Home: NextPage = () => {
             <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 14 กุมภาพันธ์ 2565</p>
             <div className="mt-4 flex flex-col space-y-4">
               <Form>
+                <MyAccordion header="การตกแต่ง" id="Custom" defaultExpanded>
+                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="theme">
+                    <>
+                      <legend className="mb-6" id="theme">
+                        Background
+                      </legend>
+                      <Radio id="none" name="theme" value="none" />
+                      <label htmlFor="none">ไม่มี Background</label>
+                      <Radio id="balls" name="theme" value="balls" />
+                      <label htmlFor="balls">Balls </label>
+                      <Radio id="study" name="theme" value="study" />
+                      <label htmlFor="study">School & Study</label>
+                    </>
+                  </fieldset>
+                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="font">
+                    <>
+                      <legend className="mb-6" id="font">
+                        ขนาด Font
+                      </legend>
+                      <Radio id="normal" name="font" value="normal" />
+                      <label htmlFor="normal">ปกติ (สามารถตั้งเป็น portrait mode ได้ใน iPad)</label>
+                      <Radio id="large" name="font" value="large" />
+                      <label htmlFor="large">ใหญ่</label>
+                    </>
+                  </fieldset>
+                </MyAccordion>
+
                 <MyAccordion header="GAT / PAT" id="GATPAT" defaultExpanded>
                   <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="GATPAT">
                     {GatPatSubjectIds.map((subject) => {
@@ -159,6 +195,8 @@ const Home: NextPage = () => {
               width={scheduleWidth(width)}
               data={{
                 subjects: values.subjects,
+                theme: values.theme,
+                font: values.font,
               }}
             />
           </div>

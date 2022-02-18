@@ -8,11 +8,17 @@ const SchedulePage: NextPage = () => {
 
   const { data } = query
 
+  const parsedData = JSON.parse(
+    (data as string) ?? '{"subjects":["GAT","PAT1","PAT3"],"theme":"study","font":"normal"}'
+  )
+
   return (
     <Schedule
       width={2388}
       data={{
-        subjects: JSON.parse((data as string) ?? '["GAT", "PAT1", "PAT3"]'),
+        subjects: parsedData.subjects ?? ["GAT", "PAT1", "PAT3"],
+        theme: parsedData.theme ?? "study",
+        font: parsedData.font ?? "normal",
       }}
     />
   )

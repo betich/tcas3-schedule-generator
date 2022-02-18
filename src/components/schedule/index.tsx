@@ -4,9 +4,12 @@ import { toDateString } from "@utils/toDateString"
 import classNames from "classnames"
 import { FC } from "react"
 import styles from "./schedule.module.scss"
+import Image from "next/image"
 
 interface IScheduleData {
   subjects: TSubjectId[]
+  font: "normal" | "large"
+  theme?: "none" | "balls" | "study"
 }
 
 const DayCard: FC<{ date: string; subjects: TSubjectObj[] }> = ({ date, subjects }) => {
@@ -32,18 +35,41 @@ const DayCard: FC<{ date: string; subjects: TSubjectObj[] }> = ({ date, subjects
   )
 }
 
-export const Schedule: FC<{ width: number; data: IScheduleData; className?: string }> = ({
-  data,
-  width = 2388,
-  className,
-}) => {
+export const Schedule: FC<{
+  width: number
+  data: IScheduleData
+  className?: string
+}> = ({ data, width = 2388, className }) => {
   const mappedSubjects: TGroupedSubjects = groupSubjects(data.subjects)
 
   return (
     <div
-      style={{ ["--width" as string]: `${width}px`, height: width * 0.6984, width }}
+      style={{
+        ["--width" as string]: `${width}px`,
+        ["--font-size" as string]: data.font === "large" ? 115 : 150,
+        height: width * 0.6984,
+        width,
+      }}
       className={classNames(className, styles["page"])}
     >
+      {data?.theme === "balls" && (
+        <>
+          <div className={styles["ball-1"]} />
+          <div className={styles["ball-2"]} />
+          <div className={styles["ball-3"]} />
+        </>
+      )}
+      {data?.theme === "study" && (
+        <div
+          style={{
+            height: width * 0.6984,
+            width,
+          }}
+          className="absolute top-0 left-0"
+        >
+          <Image src="/assets/studybg.png" layout="fill" />
+        </div>
+      )}
       <div className={styles["credit-content"]}>
         <p className="font-light">Create your schedule now!</p>
         <p className="font-monospace">https://tcas-schedule.betich.me</p>

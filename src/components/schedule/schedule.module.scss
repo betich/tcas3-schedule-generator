@@ -3,14 +3,16 @@ $py-head: 100;
 $py-body: 85;
 
 .page {
-  font-size: calc(var(--width) / 115);
+  // font-size: calc(var(--width) / 115);
   // font-size: calc(var(--width) / 150);
+  font-size: calc(var(--width) / var(--font-size));
   position: relative;
   background-color: #fafafa;
   color: #000;
   display: flex;
   align-items: center;
   font-family: "Inter", "Noto Sans Thai", "SF Pro Display", "Sukhumvit Set", "Kanit", sans-serif;
+  overflow: hidden;
 }
 
 .body-content {
@@ -83,4 +85,37 @@ $py-body: 85;
     padding-right: calc(var(--width) / 150);
     color: #4845da;
   }
+}
+
+$grad: linear-gradient(46.79deg, #3b36d2 15.01%, #3b39a5 30.68%, #6954bd 60.18%, #928fff 86.61%);
+
+.ball-1,
+.ball-2,
+.ball-3 {
+  background: $grad;
+  border-radius: 99999px;
+}
+
+.ball-1 {
+  position: absolute;
+  width: calc(var(--width) / 5.75);
+  height: calc(var(--width) / 5.75);
+  right: calc(-1 * var(--width) / 11.31);
+  top: calc(var(--width) / 5.65);
+}
+
+.ball-2 {
+  position: absolute;
+  width: calc(var(--width) / 2.96);
+  height: calc(var(--width) / 2.96);
+  right: calc(-1 * var(--width) / 11.31);
+  top: calc(var(--width) / 2.07);
+}
+
+.ball-3 {
+  position: absolute;
+  width: calc(var(--width) / 5.94);
+  height: calc(var(--width) / 5.94);
+  left: calc(-1 * var(--width) / 15.8);
+  top: calc(var(--width) / 2.2);
 }
