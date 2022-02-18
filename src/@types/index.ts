@@ -27,4 +27,11 @@ export type TSubjectObj = {
   text: string
 }
 
+export interface IScheduleData {
+  subjects: TSubjectId[]
+  font: "normal" | "large"
+  theme: "none" | "balls" | "study"
+  mode: "light" | "dark"
+}
+
 export type TGroupedSubjects = Record<string, TSubjectObj[]>

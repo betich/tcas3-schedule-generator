@@ -7,8 +7,8 @@ $py-body: 85;
   // font-size: calc(var(--width) / 150);
   font-size: calc(var(--width) / var(--font-size));
   position: relative;
-  background-color: #fafafa;
-  color: #000;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   align-items: center;
   font-family: "Inter", "Noto Sans Thai", "SF Pro Display", "Sukhumvit Set", "Kanit", sans-serif;
@@ -20,6 +20,8 @@ $py-body: 85;
   // top: calc(var(--width) / 5.25);
   padding-top: calc(var(--width) / 20);
   // left: 0;
+  position: relative;
+  z-index: 5;
   width: 100%;
 }
 
@@ -49,22 +51,24 @@ $py-body: 85;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: calc(var(--width) / 1.775);
+  width: calc(var(--width) / var(--container-width));
   gap: calc(var(--width) / 60);
 }
 
 .day-card-list > .day-card {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   border-radius: calc(var(--width) / 1080 * 7.5);
-  width: calc(var(--width) / 3.7);
+  width: calc(var(--width) / var(--card-width));
   height: 100%;
+  background-color: var(--card-bg-color);
 
   > .divider {
-    color: #cccccc;
+    color: var(--divider-color);
   }
 
   > .day-header {
     padding: calc(var(--width) / $py-head) calc(var(--width) / $px);
+    background-color: var(--card-header-bg-color);
   }
 
   > .day-schedule-list {
@@ -83,7 +87,7 @@ $py-body: 85;
 
   > .schedule-text-container > .time {
     padding-right: calc(var(--width) / 150);
-    color: #4845da;
+    color: var(--time-color);
   }
 }
 

@@ -1,16 +1,10 @@
-import { TGroupedSubjects, TSubjectId, TSubjectObj } from "@types"
+import { IScheduleData, TGroupedSubjects, TSubjectId, TSubjectObj } from "@types"
 import { groupSubjects } from "@utils/groupSubjects"
 import { toDateString } from "@utils/toDateString"
 import classNames from "classnames"
 import { FC } from "react"
 import styles from "./schedule.module.scss"
 import Image from "next/image"
-
-interface IScheduleData {
-  subjects: TSubjectId[]
-  font: "normal" | "large"
-  theme?: "none" | "balls" | "study"
-}
 
 const DayCard: FC<{ date: string; subjects: TSubjectObj[] }> = ({ date, subjects }) => {
   return (
@@ -46,10 +40,13 @@ export const Schedule: FC<{
     <div
       style={{
         ["--width" as string]: `${width}px`,
-        ["--font-size" as string]: data.font === "large" ? 115 : 150,
+        ["--font-size" as string]: data.font === "large" ? 115 : 165,
+        ["--container-width" as string]: data.font === "large" ? 1.775 : 2.4,
+        ["--card-width" as string]: data.font === "large" ? 3.7 : 5,
         height: width * 0.6984,
         width,
       }}
+      data-theme={data.mode}
       className={classNames(className, styles["page"])}
     >
       {data?.theme === "balls" && (

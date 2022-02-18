@@ -1,5 +1,5 @@
 import { Schedule } from "@components/schedule"
-import { TSubjectId } from "@types"
+import { IScheduleData, TSubjectId } from "@types"
 import type { NextPage } from "next"
 import { useState, Fragment, useEffect } from "react"
 import { MyAccordion } from "@components/common/Accordion"
@@ -36,23 +36,19 @@ const checkDisabled = (subject: TSubjectId, currSubjects: TSubjectId[]) => {
   }
 }
 
-interface IInitialFormValues {
-  subjects: TSubjectId[]
-  font: "normal" | "large"
-  theme: "none" | "balls" | "study"
-}
-
 const Home: NextPage = () => {
   const { width } = useWindowDimensions()
   const [waiting, setWaiting] = useState(false)
   const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("subjects", ["GAT", "PAT1", "PAT3"])
   const [theme, setTheme] = useLocalStorage<"none" | "balls" | "study">("theme", "study")
   const [font, setFont] = useLocalStorage<"normal" | "large">("font", "normal")
+  const [mode, setMode] = useLocalStorage<"light" | "dark">("mode", "light")
 
-  const intitalFormValues: IInitialFormValues = {
+  const intitalFormValues: IScheduleData = {
     subjects: subjects,
     theme: theme,
     font: font,
+    mode: mode,
   }
 
   return (
@@ -65,6 +61,7 @@ const Home: NextPage = () => {
         setSubject(values.subjects)
         setTheme(values.theme)
         setFont(values.font)
+        setMode(values.mode)
 
         let r = (Math.random() + 1).toString(36).substring(10)
 
@@ -121,33 +118,6 @@ const Home: NextPage = () => {
             <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 14 กุมภาพันธ์ 2565</p>
             <div className="mt-4 flex flex-col space-y-4">
               <Form>
-                <MyAccordion header="การตกแต่ง" id="Custom" defaultExpanded>
-                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="theme">
-                    <>
-                      <legend className="mb-6" id="theme">
-                        Background
-                      </legend>
-                      <Radio id="none" name="theme" value="none" />
-                      <label htmlFor="none">ไม่มี Background</label>
-                      <Radio id="balls" name="theme" value="balls" />
-                      <label htmlFor="balls">Balls </label>
-                      <Radio id="study" name="theme" value="study" />
-                      <label htmlFor="study">School & Study</label>
-                    </>
-                  </fieldset>
-                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="font">
-                    <>
-                      <legend className="mb-6" id="font">
-                        ขนาด Font
-                      </legend>
-                      <Radio id="normal" name="font" value="normal" />
-                      <label htmlFor="normal">ปกติ (สามารถตั้งเป็น portrait mode ได้ใน iPad)</label>
-                      <Radio id="large" name="font" value="large" />
-                      <label htmlFor="large">ใหญ่</label>
-                    </>
-                  </fieldset>
-                </MyAccordion>
-
                 <MyAccordion header="GAT / PAT" id="GATPAT" defaultExpanded>
                   <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="GATPAT">
                     {GatPatSubjectIds.map((subject) => {
@@ -179,6 +149,44 @@ const Home: NextPage = () => {
                   </fieldset>
                 </MyAccordion>
 
+                <MyAccordion header="การตกแต่ง" id="Custom" defaultExpanded>
+                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="theme">
+                    <>
+                      <legend className="mb-6" id="theme">
+                        Background
+                      </legend>
+                      <Radio id="none" name="theme" value="none" />
+                      <label htmlFor="none">ไม่มี Background</label>
+                      <Radio id="balls" name="theme" value="balls" />
+                      <label htmlFor="balls">Balls </label>
+                      <Radio id="study" name="theme" value="study" />
+                      <label htmlFor="study">School & Study</label>
+                    </>
+                  </fieldset>
+                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="font">
+                    <>
+                      <legend className="mb-6" id="font">
+                        ขนาด Font
+                      </legend>
+                      <Radio id="normal" name="font" value="normal" />
+                      <label htmlFor="normal">ปกติ (สามารถตั้งเป็น portrait mode ได้ใน iPad)</label>
+                      <Radio id="large" name="font" value="large" />
+                      <label htmlFor="large">ใหญ่</label>
+                    </>
+                  </fieldset>
+                  <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="mode">
+                    <>
+                      <legend className="mb-6" id="mode">
+                        สีกระดาษ
+                      </legend>
+                      <Radio id="light" name="mode" value="light" />
+                      <label htmlFor="light">Light Mode</label>
+                      <Radio id="dark" name="mode" value="dark" />
+                      <label htmlFor="dark">Dark Mode</label>
+                    </>
+                  </fieldset>
+                </MyAccordion>
+
                 <button
                   type="submit"
                   className="absolute right-4 top-4 z-50 flex space-x-2 rounded-full bg-[#7774ff] px-6 py-2 transition-transform hover:scale-105"
@@ -197,6 +205,7 @@ const Home: NextPage = () => {
                 subjects: values.subjects,
                 theme: values.theme,
                 font: values.font,
+                mode: values.mode,
               }}
             />
           </div>
