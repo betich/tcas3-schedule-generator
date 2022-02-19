@@ -289,7 +289,7 @@ const Home: NextPage = () => {
                       font: values.font,
                     })
                   }}
-                  className="absolute left-8 top-6 flex items-center space-x-2 text-sm text-gray-400 underline hover:no-underline md:left-[unset] md:top-[unset] md:right-8 md:bottom-4"
+                  className="absolute left-8 top-6 z-[99] flex items-center space-x-2 text-sm text-gray-400 underline hover:no-underline md:left-[unset] md:top-[unset] md:right-8 md:bottom-4"
                 >
                   <span>View on GitHub</span>
                   <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
