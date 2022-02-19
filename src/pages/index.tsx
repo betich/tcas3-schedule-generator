@@ -202,9 +202,9 @@ const Home: NextPage = () => {
                       <PresetButton subjects={values.subjects} activates={["GAT", "PAT1", "PAT3"]}>
                         วิศวะฯ
                       </PresetButton>
-                      <PresetButton subjects={values.subjects} activates={["GAT", "PAT1"]}>
+                      {/* <PresetButton subjects={values.subjects} activates={["GAT", "PAT1"]}>
                         บัญชี
-                      </PresetButton>
+                      </PresetButton> */}
                     </fieldset>
                   </MyAccordion>
 
