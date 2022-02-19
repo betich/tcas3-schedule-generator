@@ -3,7 +3,9 @@
 export const toDateString = (dateString: string) => {
   const [month, date] = dateString.split("/")
   //   const dateObj = new Date(`${date}/${month}/${new Date().getFullYear()}`)
-  const dateObj = new Date(`${new Date().getFullYear()}-${month}-${date}T00:00:00+07:00`)
+  const _date = new Date(`${new Date().getFullYear()}-${month}-${date}T00:00:00`)
+  const userTimezoneOffset = _date.getTimezoneOffset() * 60000
+  const dateObj = new Date(_date.getTime() - userTimezoneOffset)
 
   const monthIdxToName = [
     "ม.ค.",
