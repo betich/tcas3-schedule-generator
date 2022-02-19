@@ -22,7 +22,7 @@ export const MetaData: FC = () => {
       <meta name="author" content="betich" />
       <meta
         name="keywords"
-        content="GAT, PAT1, PAT2, PAT3, PAT4, PAT5, PAT6, PAT7, betich, tcas, ตารางสอบ tcas, dek65, มหาวิทยาลัย, tcas dek65, สอบเข้ามหาวิทยาลัย 2565, ตาราง tcas65, ตารางสอบ tcas65"
+        content="betich, thee, tcas betich, ระบบเลือกตารางสอบ tcas, เลือกตารางสอบ, GAT, PAT1, PAT2, PAT3, PAT4, PAT5, PAT6, PAT7, betich, tcas, ตารางสอบ tcas, dek65, มหาวิทยาลัย, tcas dek65, สอบเข้ามหาวิทยาลัย 2565, ตาราง tcas65, ตารางสอบ tcas65"
       />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
