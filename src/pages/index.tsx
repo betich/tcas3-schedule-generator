@@ -148,10 +148,10 @@ const Home: NextPage = () => {
                         </legend>
                         <Radio id="none" name="theme" value="none" />
                         <label htmlFor="none">ไม่มี Background</label>
-                        <Radio id="balls" name="theme" value="balls" />
-                        <label htmlFor="balls">Balls </label>
+                        <Radio id="bubbles" name="theme" value="balls" />
+                        <label htmlFor="bubbles">Bubbles 🧼</label>
                         <Radio id="study" name="theme" value="study" />
-                        <label htmlFor="study">School & Study</label>
+                        <label htmlFor="study">School & Study 📚</label>
                       </>
                     </fieldset>
                     <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="font">
