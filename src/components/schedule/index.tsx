@@ -34,12 +34,16 @@ export const Schedule: FC<{
   data: IScheduleData
   className?: string
 }> = ({ data, width = 2388, className }) => {
-  const mappedSubjects: TGroupedSubjects = groupSubjects(data.subjects)
   const [currData, setData] = useState(data)
+  const [mappedSubjects, setMappedSubjects] = useState<TGroupedSubjects>(groupSubjects(currData.subjects))
 
   useEffect(() => {
     setData(data)
   }, [data])
+
+  useEffect(() => {
+    setMappedSubjects(groupSubjects(data.subjects))
+  }, [currData])
 
   return (
     <div
