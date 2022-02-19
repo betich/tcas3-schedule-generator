@@ -48,6 +48,7 @@ export const AltPresetButton: FC<{
   return (
     <div
       className="mb-6"
+      id="selectall"
       onClick={(e) => {
         e.preventDefault()
         if (!highlighted) {
@@ -58,7 +59,7 @@ export const AltPresetButton: FC<{
       }}
     >
       <input type="checkbox" checked={highlighted} className={classNames("checkbox mb-4 mr-2")}></input>
-      <label>{children}</label>
+      <label htmlFor="selectall">{children}</label>
     </div>
   )
 }
