@@ -19,6 +19,13 @@ export const MetaData: FC = () => {
       <meta property="twitter:description" content="ระบบสร้างตารางสอบ TCAS รอบ 3 ปีการศึกษา 2565" />
       <meta property="twitter:image" content="/preview.jpg" />
 
+      <meta name="author" content="betich" />
+      <meta
+        name="keywords"
+        content="GAT, PAT1, PAT2, PAT3, PAT4, PAT5, PAT6, PAT7, betich, tcas, ตารางสอบ tcas, dek65, มหาวิทยาลัย, tcas dek65, สอบเข้ามหาวิทยาลัย 2565, ตาราง tcas65, ตารางสอบ tcas65"
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHCKJQ6Q82"></script>
       <script
         dangerouslySetInnerHTML={{
