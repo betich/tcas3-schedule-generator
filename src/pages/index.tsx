@@ -253,6 +253,17 @@ const Home: NextPage = () => {
               href="https://github.com/betich/tcas3-schedule-generator"
               target="_blank"
               rel="noreferrer"
+              onClick={() => {
+                // @ts-ignore
+                window.gtag("event", "github_click", {
+                  event_category: "github_click",
+                  event_label: "github_click",
+                  subjects: values.subjects.join(", "),
+                  theme: values.theme,
+                  mode: values.mode,
+                  font: values.font,
+                })
+              }}
               className="absolute right-8 bottom-4 flex items-center space-x-2 text-sm text-gray-400 underline hover:no-underline"
             >
               <span>View on GitHub</span>
