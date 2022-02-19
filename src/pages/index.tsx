@@ -114,7 +114,7 @@ const Home: NextPage = () => {
 
   return (
     <Formik initialValues={intitalFormValues} onSubmit={onSubmit}>
-      {({ values, setFieldValue }) => {
+      {function useRender({ values, setFieldValue }) {
         useEffect(() => {
           setFieldValue("subjects", subjects)
         }, [subjects])
