@@ -37,7 +37,7 @@ export const MyAccordion: FC<{ defaultExpanded?: boolean; header: string; id: st
   const [expanded, setExpand] = useState(defaultExpanded ?? false)
 
   return (
-    <div className="w-full rounded-lg bg-[#20212C]" id={id}>
+    <div className="w-full rounded-lg bg-[#20212C]" id={`${id}-parent`}>
       <button
         aria-expanded={expanded}
         aria-controls={`${id}-panel`}
