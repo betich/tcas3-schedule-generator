@@ -2,7 +2,7 @@ import { IScheduleData, TGroupedSubjects, TSubjectId, TSubjectObj } from "@types
 import { groupSubjects } from "@utils/groupSubjects"
 import { toDateString } from "@utils/toDateString"
 import classNames from "classnames"
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import styles from "./schedule.module.scss"
 import Image from "next/image"
 
@@ -35,30 +35,35 @@ export const Schedule: FC<{
   className?: string
 }> = ({ data, width = 2388, className }) => {
   const mappedSubjects: TGroupedSubjects = groupSubjects(data.subjects)
+  const [currData, setData] = useState(data)
+
+  useEffect(() => {
+    setData(data)
+  }, [data])
 
   return (
     <div
       style={{
         ["--width" as string]: `${width}px`,
-        ["--font-size" as string]: data.font === "large" ? 110 : 165,
-        ["--container-width" as string]: data.font === "large" ? 1.8 : 2.4,
-        ["--card-width" as string]: data.font === "large" ? 3.715 : 5,
-        ["--gap" as string]: data.font === "large" ? -10 : 1000,
+        ["--font-size" as string]: currData.font === "large" ? 110 : 165,
+        ["--container-width" as string]: currData.font === "large" ? 1.8 : 2.4,
+        ["--card-width" as string]: currData.font === "large" ? 3.715 : 5,
+        ["--gap" as string]: currData.font === "large" ? -10 : 1000,
         ["--text-align" as string]: Object.keys(mappedSubjects).length === 1 ? "left" : "right",
         height: width * 0.6984,
         width,
       }}
-      data-theme={data.mode}
+      data-theme={currData.mode}
       className={classNames(className, styles["page"])}
     >
-      {data?.theme === "balls" && (
+      {currData?.theme === "balls" && (
         <>
           <div className={styles["ball-1"]} />
           <div className={styles["ball-2"]} />
           <div className={styles["ball-3"]} />
         </>
       )}
-      {data?.theme === "study" && (
+      {currData?.theme === "study" && (
         <div
           style={{
             height: width * 0.6984,

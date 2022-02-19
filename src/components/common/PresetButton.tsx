@@ -1,13 +1,19 @@
-import { TSubjectId } from "@types"
+import { IScheduleData, TSubjectId } from "@types"
 import classNames from "classnames"
 import { useFormikContext } from "formik"
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 
 export const PresetButton: FC<{
   activates: TSubjectId[]
   subjects: TSubjectId[]
-}> = ({ activates, subjects, children }) => {
-  const formikProps = useFormikContext()
+}> = ({ activates, children }) => {
+  const formikProps = useFormikContext<IScheduleData>()
+  const subjects = formikProps.values.subjects
+  const [highlighted, setHighlight] = useState(false)
+
+  useEffect(() => {
+    setHighlight(activates.length === subjects.length && subjects.every((s) => activates.some((a) => a === s)))
+  }, [subjects, activates])
 
   return (
     <>
@@ -17,9 +23,7 @@ export const PresetButton: FC<{
           formikProps.setFieldValue("subjects", activates)
         }}
         className={classNames(
-          activates.length === subjects.length && subjects.every((s) => activates.some((a) => a === s))
-            ? "bg-[#7774FF] text-white"
-            : "bg-white text-black",
+          highlighted ? "bg-[#7774FF] text-white" : "bg-white text-black",
           "mb-2 mr-2 rounded-full px-8 py-2"
         )}
       >
