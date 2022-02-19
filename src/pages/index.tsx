@@ -5,7 +5,7 @@ import { useState, Fragment, useEffect, useRef } from "react"
 import { MyAccordion } from "@components/common/Accordion"
 import { Field, Form, Formik, FormikValues, useFormik, useFormikContext } from "formik"
 import { useWindowDimensions } from "@utils/useWindowDimensions"
-import { LG, MD, SM } from "@utils/breakpoints"
+import { LG, MD, SM, XL } from "@utils/breakpoints"
 import { Checkbox } from "@components/common/Checkbox"
 import { GatPatSubjectIds, MedSubjectIds, SubjectNames } from "@utils/subjects"
 import { SaveIcon } from "@heroicons/react/outline"
@@ -16,7 +16,9 @@ import { AltPresetButton, PresetButton } from "@components/common/PresetButton"
 const InApp = require("detect-inapp")
 
 const scheduleWidth = (width: number) => {
-  if (width > LG) {
+  if (width > XL) {
+    return (width * 3) / 4 - 400
+  } else if (width > LG) {
     return 650
   } else if (width > MD) {
     return 475
