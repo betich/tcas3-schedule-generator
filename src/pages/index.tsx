@@ -12,7 +12,7 @@ import { SaveIcon } from "@heroicons/react/outline"
 import { Ellipsis } from "@components/common/Ellipsis"
 import { useLocalStorage } from "@utils/useLocalStorage"
 import { Radio } from "@components/common/Radio"
-import { PresetButton } from "@components/common/PresetButton"
+import { AltPresetButton, PresetButton } from "@components/common/PresetButton"
 const InApp = require("detect-inapp")
 
 const scheduleWidth = (width: number) => {
@@ -176,7 +176,7 @@ const Home: NextPage = () => {
                     </fieldset>
                   </MyAccordion>
 
-                  <MyAccordion header="Presets" id="presets" defaultExpanded>
+                  {/* <MyAccordion header="Presets" id="presets" defaultExpanded>
                     <fieldset
                       className="relative flex flex-wrap text-sm md:flex-row"
                       role="group"
@@ -202,11 +202,8 @@ const Home: NextPage = () => {
                       <PresetButton subjects={values.subjects} activates={["GAT", "PAT1", "PAT3"]}>
                         วิศวะฯ
                       </PresetButton>
-                      {/* <PresetButton subjects={values.subjects} activates={["GAT", "PAT1"]}>
-                        บัญชี
-                      </PresetButton> */}
                     </fieldset>
-                  </MyAccordion>
+                  </MyAccordion> */}
 
                   <MyAccordion header="GAT / PAT" id="GATPAT" defaultExpanded>
                     <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="GATPAT">
@@ -222,6 +219,23 @@ const Home: NextPage = () => {
                   </MyAccordion>
 
                   <MyAccordion header="วิชาสามัญ / กสพท." id="MED" defaultExpanded>
+                    <AltPresetButton
+                      subjects={values.subjects}
+                      activates={[
+                        "GEN69",
+                        "GEN49",
+                        "GEN09",
+                        "GEN19",
+                        "GEN39",
+                        "GEN29",
+                        "GEN59",
+                        "MED1",
+                        "MED2",
+                        "MED3",
+                      ]}
+                    >
+                      เลือกวิชาแพทย์ทั้งหมด
+                    </AltPresetButton>
                     <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="MED">
                       {MedSubjectIds.map((subject) => {
                         return (

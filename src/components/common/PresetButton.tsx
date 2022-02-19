@@ -32,3 +32,33 @@ export const PresetButton: FC<{
     </>
   )
 }
+
+export const AltPresetButton: FC<{
+  activates: TSubjectId[]
+  subjects: TSubjectId[]
+}> = ({ activates, children }) => {
+  const formikProps = useFormikContext<IScheduleData>()
+  const subjects = formikProps.values.subjects
+  const [highlighted, setHighlight] = useState(false)
+
+  useEffect(() => {
+    setHighlight(activates.length === subjects.length && subjects.every((s) => activates.some((a) => a === s)))
+  }, [subjects, activates])
+
+  return (
+    <div
+      className="mb-6"
+      onClick={(e) => {
+        e.preventDefault()
+        if (!highlighted) {
+          formikProps.setFieldValue("subjects", activates)
+        } else {
+          formikProps.setFieldValue("subjects", [])
+        }
+      }}
+    >
+      <input type="checkbox" checked={highlighted} className={classNames("checkbox mb-4 mr-2")}></input>
+      <label>{children}</label>
+    </div>
+  )
+}
