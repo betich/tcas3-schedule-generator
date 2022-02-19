@@ -42,7 +42,7 @@ export const Schedule: FC<{
   }, [data])
 
   useEffect(() => {
-    setMappedSubjects(groupSubjects(data.subjects))
+    setMappedSubjects(groupSubjects(currData.subjects))
   }, [currData])
 
   return (

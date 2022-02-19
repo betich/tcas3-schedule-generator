@@ -58,7 +58,14 @@ export const AltPresetButton: FC<{
         }
       }}
     >
-      <input type="checkbox" checked={highlighted} className={classNames("checkbox mb-4 mr-2")}></input>
+      <input
+        onChange={(e) => {
+          e.preventDefault()
+        }}
+        type="checkbox"
+        checked={highlighted}
+        className={classNames("checkbox mb-4 mr-2")}
+      ></input>
       <label htmlFor="selectall">{children}</label>
     </div>
   )

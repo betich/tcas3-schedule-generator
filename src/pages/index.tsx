@@ -42,32 +42,32 @@ const Home: NextPage = () => {
     "MED2",
     "MED3",
   ])
-  const [theme, setTheme] = useLocalStorage<"none" | "balls" | "study">("theme", "study")
-  const [font, setFont] = useLocalStorage<"normal" | "large">("font", "large")
-  const [mode, setMode] = useLocalStorage<"light" | "dark">("mode", "light")
-
-  // const intitalFormValues: IScheduleData = {
-  //   subjects: subjects,
-  //   theme: "study",
-  //   font: "large",
-  //   mode: "light",
-  // }
+  // const [theme, setTheme] = useLocalStorage<"none" | "balls" | "study">("theme", "study")
+  // const [font, setFont] = useLocalStorage<"normal" | "large">("font", "large")
+  // const [mode, setMode] = useLocalStorage<"light" | "dark">("mode", "light")
 
   const intitalFormValues: IScheduleData = {
     subjects: subjects,
-    theme: theme,
-    font: font,
-    mode: mode,
+    theme: "study",
+    font: "large",
+    mode: "light",
   }
+
+  // const intitalFormValues: IScheduleData = {
+  //   subjects: subjects,
+  //   theme: theme,
+  //   font: font,
+  //   mode: mode,
+  // }
 
   const onSubmit = async (values: FormikValues) => {
     if (waiting) return
 
     // window.localStorage.setItem("subjects", JSON.stringify(values.subjects))
-    setSubject(values.subjects)
-    setTheme(values.theme)
-    setFont(values.font)
-    setMode(values.mode)
+    // setSubject(values.subjects)
+    // setTheme(values.theme)
+    // setFont(values.font)
+    // setMode(values.mode)
 
     let r = (Math.random() + 1).toString(36).substring(10)
 
