@@ -75,7 +75,7 @@ export const Schedule: FC<{
           }}
           className="absolute top-0 left-0"
         >
-          <Image priority={true} src="/assets/studybg.png" layout="fill" />
+          <Image alt="ตารางสอบ TCAS รอบ 3 DEK65" priority={true} src="/assets/studybg.png" layout="fill" />
         </div>
       )}
       <div className={styles["credit-content"]}>
