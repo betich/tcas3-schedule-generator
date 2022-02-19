@@ -221,24 +221,24 @@ const Home: NextPage = () => {
                   </MyAccordion>
 
                   <MyAccordion header="วิชาสามัญ / กสพท." id="MED" defaultExpanded>
-                    <AltPresetButton
-                      subjects={values.subjects}
-                      activates={[
-                        "GEN69",
-                        "GEN49",
-                        "GEN09",
-                        "GEN19",
-                        "GEN39",
-                        "GEN29",
-                        "GEN59",
-                        "MED1",
-                        "MED2",
-                        "MED3",
-                      ]}
-                    >
-                      เลือกวิชาแพทย์ทั้งหมด
-                    </AltPresetButton>
                     <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="MED">
+                      <AltPresetButton
+                        subjects={values.subjects}
+                        activates={[
+                          "GEN69",
+                          "GEN49",
+                          "GEN09",
+                          "GEN19",
+                          "GEN39",
+                          "GEN29",
+                          "GEN59",
+                          "MED1",
+                          "MED2",
+                          "MED3",
+                        ]}
+                      >
+                        เลือกวิชาแพทย์ทั้งหมด
+                      </AltPresetButton>
                       {MedSubjectIds.map((subject) => {
                         return (
                           <Fragment key={subject}>
