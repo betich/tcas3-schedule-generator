@@ -80,7 +80,7 @@ export const Schedule: FC<{
       )}
       <div className={styles["credit-content"]}>
         <p className="font-light">Create your schedule now!</p>
-        <p className="font-monospace">https://tcas-schedule.betich.me</p>
+        <p className="font-monospace">https://tcas.betich.me</p>
       </div>
       <div className={styles["body-content"]}>
         <div className={styles["heading-text"]}>
