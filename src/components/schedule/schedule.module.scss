@@ -131,6 +131,15 @@ $grad: linear-gradient(46.79deg, #3b36d2 15.01%, #3b39a5 30.68%, #6954bd 60.18%,
 }
 
 .uni-img {
-  width: calc(var(--width) / 4.65);
-  height: calc(var(--width) / 4.65);
+  width: calc(var(--width) / 5);
+  height: calc(var(--width) / 4.25);
+}
+
+.tcaster {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--width) / 12);
+  height: calc(var(--width) / 18.5);
+  bottom: calc(var(--width) / 15.65);
 }

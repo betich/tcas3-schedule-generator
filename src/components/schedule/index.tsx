@@ -101,6 +101,10 @@ export const Schedule: FC<{
           <div className={classNames(styles["uni-img"], "absolute bottom-0 right-0")}>
             <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
           </div>
+
+          {/* <div className={styles["tcaster"]}>
+            <Image alt="TCASter Logo" priority={true} src={`/assets/tcaster.png`} layout="fill" />
+          </div> */}
         </>
       )}
       {currData.mode !== "uni" && (
