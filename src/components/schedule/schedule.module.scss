@@ -133,6 +133,39 @@ $grad: linear-gradient(46.79deg, #3b36d2 15.01%, #3b39a5 30.68%, #6954bd 60.18%,
 .uni-img {
   width: calc(var(--width) / 5);
   height: calc(var(--width) / 4.25);
+  position: absolute;
+
+  &.topleft {
+    top: calc(var(--width) / 75);
+    left: calc(var(--width) / 75);
+  }
+
+  &.topmid {
+    top: calc(var(--width) / 75);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.topright {
+    top: calc(var(--width) / 75);
+    right: calc(var(--width) / 75);
+  }
+
+  &.bottomleft {
+    bottom: calc(var(--width) / 75);
+    left: calc(var(--width) / 75);
+  }
+
+  &.bottommid {
+    bottom: calc(var(--width) / 75);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.bottomright {
+    bottom: calc(var(--width) / 75);
+    right: calc(var(--width) / 75);
+  }
 }
 
 .tcaster {
