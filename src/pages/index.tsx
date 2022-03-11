@@ -163,7 +163,7 @@ const Home: NextPage = () => {
                         <label htmlFor="uni">
                           ยันต์สอบติด (Cr.{" "}
                           <a
-                            rel="norefferer"
+                            rel="noreferrer"
                             target="_blank"
                             href="https://www.facebook.com/TCASterApp/posts/2801627623473431"
                             className="underline hover:no-underline"
