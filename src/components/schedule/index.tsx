@@ -1,10 +1,11 @@
-import { IScheduleData, TGroupedSubjects, TSubjectId, TSubjectObj } from "@types"
+import { IScheduleData, TGroupedSubjects, TSubjectId, TSubjectObj, TUnis } from "@types"
 import { groupSubjects } from "@utils/groupSubjects"
 import { toDateString } from "@utils/toDateString"
 import classNames from "classnames"
 import { FC, useEffect, useState } from "react"
 import styles from "./schedule.module.scss"
 import Image from "next/image"
+import { uniColor, unis } from "@utils/unis"
 
 const DayCard: FC<{ date: string; subjects: TSubjectObj[] }> = ({ date, subjects }) => {
   return (
@@ -54,6 +55,7 @@ export const Schedule: FC<{
         ["--card-width" as string]: currData.font === "large" ? 3.715 : 5,
         ["--gap" as string]: currData.font === "large" ? -10 : 1000,
         ["--text-align" as string]: Object.keys(mappedSubjects).length === 1 ? "left" : "right",
+        ["--uni-color" as string]: uniColor[currData.theme as TUnis],
         height: width * 0.6984,
         width,
       }}
@@ -78,7 +80,35 @@ export const Schedule: FC<{
           <Image alt="ตารางสอบ TCAS รอบ 3 DEK65" priority={true} src="/assets/studybg.png" layout="fill" />
         </div>
       )}
-      <div className={styles["credit-content"]}>
+      {unis.includes(currData?.theme) && (
+        <>
+          <div className="absolute top-0 left-0 h-[450px] w-[450px]">
+            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+          </div>
+          <div className="absolute top-0 left-1/2 h-[450px] w-[450px] -translate-x-1/2">
+            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+          </div>
+          <div className="absolute top-0 right-0 h-[450px] w-[450px]">
+            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+          </div>
+
+          <div className="absolute bottom-0 left-0 h-[450px] w-[450px]">
+            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+          </div>
+          <div className="absolute bottom-0 left-1/2 h-[450px] w-[450px] -translate-x-1/2">
+            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+          </div>
+          <div className="absolute bottom-0 right-0 h-[450px] w-[450px]">
+            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+          </div>
+        </>
+      )}
+      <div
+        style={{
+          backgroundColor: currData.mode === "uni" ? uniColor[currData.theme as TUnis] : undefined,
+        }}
+        className={styles["credit-content"]}
+      >
         <p className="font-light">Create your schedule now!</p>
         <p className="font-monospace">https://tcas.betich.me</p>
       </div>

@@ -10,6 +10,7 @@
     --card-bg-color: #fff;
     --card-head-bg-color: #fff;
     --text-color: #000;
+    --card-text-color: #000;
     --divider-color: #ccc;
     --time-color: #4845da;
   }
@@ -19,8 +20,19 @@
     --card-bg-color: #272833;
     --card-head-bg-color: #20212c;
     --text-color: #fff;
+    --card-text-color: #fff;
     --divider-color: #ccc;
     --time-color: #928fff;
+  }
+
+  [data-theme="uni"] {
+    --bg-color: var(--uni-color);
+    --card-bg-color: rgba(50, 50, 50, 0.51);
+    --card-head-bg-color: #fff;
+    --text-color: #fff;
+    --card-text-color: #fff;
+    --divider-color: #ccc;
+    --time-color: #b8b5ff;
   }
 
   .checkbox:not(:checked),

@@ -27,11 +27,28 @@ export type TSubjectObj = {
   text: string
 }
 
+export type TUnis =
+  | "BUU"
+  | "CMU"
+  | "CU"
+  | "KKU"
+  | "KMITL"
+  | "KMUTNB"
+  | "KMUTT"
+  | "KU"
+  | "MFU"
+  | "MU"
+  | "NU"
+  | "PSU"
+  | "SU"
+  | "SWU"
+  | "TU"
+
 export interface IScheduleData {
   subjects: TSubjectId[]
   font: "normal" | "large"
-  theme: "none" | "balls" | "study"
-  mode: "light" | "dark"
+  theme: "none" | "balls" | "study" | TUnis
+  mode: "light" | "dark" | "uni"
 }
 
 export type TGroupedSubjects = Record<string, TSubjectObj[]>
