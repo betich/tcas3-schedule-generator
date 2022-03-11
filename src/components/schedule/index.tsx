@@ -103,15 +103,12 @@ export const Schedule: FC<{
           </div>
         </>
       )}
-      <div
-        style={{
-          backgroundColor: currData.mode === "uni" ? uniColor[currData.theme as TUnis] : undefined,
-        }}
-        className={styles["credit-content"]}
-      >
-        <p className="font-light">Create your schedule now!</p>
-        <p className="font-monospace">https://tcas.betich.me</p>
-      </div>
+      {currData.mode !== "uni" && (
+        <div className={styles["credit-content"]}>
+          <p className="font-light">Create your schedule now!</p>
+          <p className="font-monospace">https://tcas.betich.me</p>
+        </div>
+      )}
       <div className={styles["body-content"]}>
         <div className={styles["heading-text"]}>
           <h2 className={styles["text"]}>ตารางสอบรอบ 3 TCAS DEK65</h2>

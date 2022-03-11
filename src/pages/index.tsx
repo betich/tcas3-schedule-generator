@@ -161,7 +161,7 @@ const Home: NextPage = () => {
                         <label htmlFor="dark">Dark Mode</label>
                         <Radio id="uni" name="mode" value="uni" />
                         <label htmlFor="uni">
-                          ยันต์สอบติด (by{" "}
+                          ยันต์สอบติด (Cr.{" "}
                           <a
                             rel="norefferer"
                             target="_blank"
