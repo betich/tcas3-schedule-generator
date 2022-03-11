@@ -13,6 +13,7 @@ import { Ellipsis } from "@components/common/Ellipsis"
 import { useLocalStorage } from "@utils/useLocalStorage"
 import { Radio } from "@components/common/Radio"
 import { AltPresetButton, PresetButton } from "@components/common/PresetButton"
+import { fullUniName, unis } from "@utils/unis"
 const InApp = require("detect-inapp")
 
 const scheduleWidth = (width: number) => {
@@ -121,6 +122,14 @@ const Home: NextPage = () => {
           setFieldValue("subjects", subjects)
         }, [subjects])
 
+        useEffect(() => {
+          if (values.mode === "uni" && !unis.includes(values.theme)) {
+            setFieldValue("theme", "CU")
+          } else if (values.mode !== "uni" && unis.includes(values.theme)) {
+            setFieldValue("theme", "study")
+          }
+        }, [values.mode])
+
         return (
           <Form>
             <main className="relative flex min-h-screen flex-col bg-[#15151C] font-display text-white md:flex-row">
@@ -141,17 +150,57 @@ const Home: NextPage = () => {
                 <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 14 กุมภาพันธ์ 2565</p>
                 <div className="mt-4 flex flex-col space-y-4">
                   <MyAccordion header="การตกแต่ง" id="Custom">
+                    <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="mode">
+                      <>
+                        <legend className="mb-6" id="mode">
+                          สีกระดาษ
+                        </legend>
+                        <Radio id="light" name="mode" value="light" />
+                        <label htmlFor="light">Light Mode</label>
+                        <Radio id="dark" name="mode" value="dark" />
+                        <label htmlFor="dark">Dark Mode</label>
+                        <Radio id="uni" name="mode" value="uni" />
+                        <label htmlFor="uni">
+                          ยันต์สอบติด (by{" "}
+                          <a
+                            rel="norefferer"
+                            target="_blank"
+                            href="https://www.facebook.com/TCASterApp/posts/2801627623473431"
+                            className="underline hover:no-underline"
+                          >
+                            TCASter
+                          </a>
+                          )
+                        </label>
+                      </>
+                    </fieldset>
                     <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="theme">
                       <>
                         <legend className="mb-6" id="theme">
                           Background
                         </legend>
-                        <Radio id="none" name="theme" value="none" />
-                        <label htmlFor="none">ไม่มี Background</label>
-                        <Radio id="bubbles" name="theme" value="balls" />
-                        <label htmlFor="bubbles">Bubbles 🧼</label>
-                        <Radio id="study" name="theme" value="study" />
-                        <label htmlFor="study">School & Study 📚</label>
+                        {values.mode !== "uni" && (
+                          <>
+                            <Radio id="none" name="theme" value="none" />
+                            <label htmlFor="none">ไม่มี Background</label>
+                            <Radio id="bubbles" name="theme" value="balls" />
+                            <label htmlFor="bubbles">Bubbles 🧼</label>
+                            <Radio id="study" name="theme" value="study" />
+                            <label htmlFor="study">School & Study 📚</label>
+                          </>
+                        )}
+                        {values.mode === "uni" && (
+                          <>
+                            {Object.entries(fullUniName).map(([uniId, uniName]) => {
+                              return (
+                                <Fragment key={uniId}>
+                                  <Radio id={uniId} name="theme" value={uniId} />
+                                  <label htmlFor={uniId}>{uniName}</label>
+                                </Fragment>
+                              )
+                            })}
+                          </>
+                        )}
                       </>
                     </fieldset>
                     <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="font">
@@ -163,17 +212,6 @@ const Home: NextPage = () => {
                         <label htmlFor="normal">ปกติ (สำหรับตั้งเป็นวอลเปเปอร์ของ iPad)</label>
                         <Radio id="large" name="font" value="large" />
                         <label htmlFor="large">ใหญ่</label>
-                      </>
-                    </fieldset>
-                    <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="mode">
-                      <>
-                        <legend className="mb-6" id="mode">
-                          สีกระดาษ
-                        </legend>
-                        <Radio id="light" name="mode" value="light" />
-                        <label htmlFor="light">Light Mode</label>
-                        <Radio id="dark" name="mode" value="dark" />
-                        <label htmlFor="dark">Dark Mode</label>
                       </>
                     </fieldset>
                   </MyAccordion>

@@ -82,23 +82,23 @@ export const Schedule: FC<{
       )}
       {unis.includes(currData?.theme) && (
         <>
-          <div className="absolute top-0 left-0 h-[450px] w-[450px]">
+          <div className={classNames(styles["uni-img"], "absolute top-0 left-0")}>
             <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
           </div>
-          <div className="absolute top-0 left-1/2 h-[450px] w-[450px] -translate-x-1/2">
+          <div className={classNames(styles["uni-img"], "absolute top-0 left-1/2 -translate-x-1/2")}>
             <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
           </div>
-          <div className="absolute top-0 right-0 h-[450px] w-[450px]">
+          <div className={classNames(styles["uni-img"], "absolute top-0 right-0")}>
             <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
           </div>
 
-          <div className="absolute bottom-0 left-0 h-[450px] w-[450px]">
+          <div className={classNames(styles["uni-img"], "absolute bottom-0 left-0")}>
             <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
           </div>
-          <div className="absolute bottom-0 left-1/2 h-[450px] w-[450px] -translate-x-1/2">
+          <div className={classNames(styles["uni-img"], "absolute bottom-0 left-1/2 -translate-x-1/2")}>
             <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
           </div>
-          <div className="absolute bottom-0 right-0 h-[450px] w-[450px]">
+          <div className={classNames(styles["uni-img"], "absolute bottom-0 right-0")}>
             <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
           </div>
         </>
