@@ -77,7 +77,7 @@ export const Schedule: FC<{
           }}
           className="absolute top-0 left-0"
         >
-          <Image alt="ตารางสอบ TCAS รอบ 3 DEK65" priority={true} src="/assets/studybg.png" layout="fill" />
+          <Image alt="ตารางสอบ TCAS รอบ 3 DEK66" priority={true} src="/assets/studybg.png" layout="fill" />
         </div>
       )}
       {unis.includes(currData?.theme) && (
@@ -115,7 +115,7 @@ export const Schedule: FC<{
       )}
       <div className={styles["body-content"]}>
         <div className={styles["heading-text"]}>
-          <h2 className={styles["text"]}>ตารางสอบรอบ 3 TCAS DEK65</h2>
+          <h2 className={styles["text"]}>ตารางสอบรอบ 3 TCAS DEK66</h2>
         </div>
         <div className={styles["day-card-list"]}>
           {Object.keys(mappedSubjects).map((date, i) => {
