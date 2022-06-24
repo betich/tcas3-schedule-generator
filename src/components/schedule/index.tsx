@@ -77,7 +77,9 @@ export const Schedule: FC<{
           }}
           className="absolute top-0 left-0"
         >
-          <Image alt="ตารางสอบ TCAS รอบ 3 DEK66" priority={true} src="/assets/studybg.png" layout="fill" />
+          <div className="reltive">
+            <Image alt="ตารางสอบ TCAS รอบ 3 DEK66" priority={true} src="/assets/studybg.png" layout="fill" />
+          </div>
         </div>
       )}
       {unis.includes(currData?.theme) && (
