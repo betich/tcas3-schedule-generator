@@ -7,7 +7,7 @@ import { Field, Form, Formik, FormikValues, useFormik, useFormikContext } from "
 import { useWindowDimensions } from "@utils/useWindowDimensions"
 import { LG, MD, SM, XL } from "@utils/breakpoints"
 import { Checkbox } from "@components/common/Checkbox"
-import { ALevelSubjectIDs, GatPatSubjectIds, SubjectNames } from "@utils/subjects"
+import { ALevelSubjectIDs, GatPatSubjectIds, MedSubjects, SubjectNames } from "@utils/subjects"
 import { SaveIcon } from "@heroicons/react/outline"
 import { Ellipsis } from "@components/common/Ellipsis"
 import { useLocalStorage } from "@utils/useLocalStorage"
@@ -31,7 +31,7 @@ const scheduleWidth = (width: number) => {
 const Home: NextPage = () => {
   const { width } = useWindowDimensions()
   const [waiting, setWaiting] = useState(false)
-  const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("66subjects", ["TGAT"])
+  const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("66subjects", MedSubjects)
 
   const intitalFormValues: IScheduleData = {
     subjects: subjects,
@@ -191,7 +191,7 @@ const Home: NextPage = () => {
 
                   <MyAccordion header="TGAT / TPAT" id="TGATTPAT" defaultExpanded>
                     <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="GATPAT">
-                      <AltPresetButton subjects={values.subjects} activates={["TGAT"]}>
+                      <AltPresetButton subjects={values.subjects} activates={MedSubjects}>
                         เลือกวิชาแพทย์ทั้งหมด
                       </AltPresetButton>
                       {GatPatSubjectIds.map((subject) => {

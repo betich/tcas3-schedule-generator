@@ -1,7 +1,17 @@
 import { TSubjectId, TSubjectObj } from "@types"
 
-export const GatPatSubjectIds: TSubjectId[] = ["TGAT", "TPAT1", "TPAT2", "TPAT3", "TPAT4", "TPAT5"]
+export const MedSubjects: TSubjectId[] = [
+  "TPAT1",
+  "AL_PHY",
+  "AL_CHEM",
+  "AL_BIO",
+  "AL_MATH1",
+  "AL_ENG",
+  "AL_THAI",
+  "AL_SOC",
+]
 
+export const GatPatSubjectIds: TSubjectId[] = ["TGAT", "TPAT1", "TPAT2", "TPAT3", "TPAT4", "TPAT5"]
 export const ALevelSubjectIDs: TSubjectId[] = [
   "AL_BIO",
   "AL_PHY",
