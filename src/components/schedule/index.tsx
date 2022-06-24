@@ -35,41 +35,32 @@ export const Schedule: FC<{
   data: IScheduleData
   className?: string
 }> = ({ data, width = 2388, className }) => {
-  const [currData, setData] = useState(data)
-  const [mappedSubjects, setMappedSubjects] = useState<TGroupedSubjects>(groupSubjects(currData.subjects))
-
-  useEffect(() => {
-    setData(data)
-  }, [data])
-
-  useEffect(() => {
-    setMappedSubjects(groupSubjects(currData.subjects))
-  }, [currData])
+  const mappedSubjects = groupSubjects(data.subjects)
 
   return (
     <div
       style={{
         ["--width" as string]: `${width}px`,
-        ["--font-size" as string]: currData.font === "large" ? 110 : 165,
-        ["--container-width" as string]: currData.font === "large" ? 1.8 : 2.4,
-        ["--card-width" as string]: currData.font === "large" ? 3.715 : 5,
-        ["--gap" as string]: currData.font === "large" ? -10 : 1000,
+        ["--font-size" as string]: data.font === "large" ? 110 : 165,
+        ["--container-width" as string]: data.font === "large" ? 1.8 : 2.4,
+        ["--card-width" as string]: data.font === "large" ? 3.715 : 5,
+        ["--gap" as string]: data.font === "large" ? -10 : 1000,
         ["--text-align" as string]: Object.keys(mappedSubjects).length === 1 ? "left" : "right",
-        ["--uni-color" as string]: uniColor[currData.theme as TUnis],
+        ["--uni-color" as string]: uniColor[data.theme as TUnis],
         height: width * 0.6984,
         width,
       }}
-      data-theme={currData.mode}
+      data-theme={data.mode}
       className={classNames(className, styles["page"])}
     >
-      {currData?.theme === "balls" && (
+      {data?.theme === "balls" && (
         <>
           <div className={styles["ball-1"]} />
           <div className={styles["ball-2"]} />
           <div className={styles["ball-3"]} />
         </>
       )}
-      {currData?.theme === "study" && (
+      {data?.theme === "study" && (
         <div
           style={{
             height: width * 0.6984,
@@ -82,26 +73,26 @@ export const Schedule: FC<{
           </div>
         </div>
       )}
-      {unis.includes(currData?.theme) && (
+      {unis.includes(data?.theme) && (
         <>
           <div className={classNames(styles["uni-img"], styles["topleft"])}>
-            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+            <Image alt={data.theme} priority={true} src={`/assets/uni/${data.theme}.png`} layout="fill" />
           </div>
           <div className={classNames(styles["uni-img"], styles["topmid"])}>
-            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+            <Image alt={data.theme} priority={true} src={`/assets/uni/${data.theme}.png`} layout="fill" />
           </div>
           <div className={classNames(styles["uni-img"], styles["topright"])}>
-            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+            <Image alt={data.theme} priority={true} src={`/assets/uni/${data.theme}.png`} layout="fill" />
           </div>
 
           <div className={classNames(styles["uni-img"], styles["bottomleft"])}>
-            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+            <Image alt={data.theme} priority={true} src={`/assets/uni/${data.theme}.png`} layout="fill" />
           </div>
           <div className={classNames(styles["uni-img"], styles["bottommid"])}>
-            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+            <Image alt={data.theme} priority={true} src={`/assets/uni/${data.theme}.png`} layout="fill" />
           </div>
           <div className={classNames(styles["uni-img"], styles["bottomright"])}>
-            <Image alt={currData.theme} priority={true} src={`/assets/uni/${currData.theme}.png`} layout="fill" />
+            <Image alt={data.theme} priority={true} src={`/assets/uni/${data.theme}.png`} layout="fill" />
           </div>
 
           {/* <div className={styles["tcaster"]}>
@@ -109,7 +100,7 @@ export const Schedule: FC<{
           </div> */}
         </>
       )}
-      {currData.mode !== "uni" && (
+      {data.mode !== "uni" && (
         <div className={styles["credit-content"]}>
           <p className="font-light">Create your schedule now!</p>
           <p className="font-monospace">https://tcas.betich.me</p>
