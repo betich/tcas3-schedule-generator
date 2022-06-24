@@ -205,7 +205,7 @@ const Home: NextPage = () => {
                     </fieldset>
                   </MyAccordion>
 
-                  <MyAccordion header="A Level" id="ALEVEL" defaultExpanded>
+                  <MyAccordion header="A-Level" id="A-LEVEL" defaultExpanded>
                     <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="MED">
                       {ALevelSubjectIDs.map((subject) => {
                         return (
