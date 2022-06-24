@@ -7,7 +7,7 @@ import { Field, Form, Formik, FormikValues, useFormik, useFormikContext } from "
 import { useWindowDimensions } from "@utils/useWindowDimensions"
 import { LG, MD, SM, XL } from "@utils/breakpoints"
 import { Checkbox } from "@components/common/Checkbox"
-import { GatPatSubjectIds, MedSubjectIds, SubjectNames } from "@utils/subjects"
+import { ALevelSubjectIDs, GatPatSubjectIds, SubjectNames } from "@utils/subjects"
 import { SaveIcon } from "@heroicons/react/outline"
 import { Ellipsis } from "@components/common/Ellipsis"
 import { useLocalStorage } from "@utils/useLocalStorage"
@@ -31,21 +31,7 @@ const scheduleWidth = (width: number) => {
 const Home: NextPage = () => {
   const { width } = useWindowDimensions()
   const [waiting, setWaiting] = useState(false)
-  const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("subjects", [
-    "GEN69",
-    "GEN49",
-    "GEN09",
-    "GEN19",
-    "GEN39",
-    "GEN29",
-    "GEN59",
-    "MED1",
-    "MED2",
-    "MED3",
-  ])
-  // const [theme, setTheme] = useLocalStorage<"none" | "balls" | "study">("theme", "study")
-  // const [font, setFont] = useLocalStorage<"normal" | "large">("font", "large")
-  // const [mode, setMode] = useLocalStorage<"light" | "dark">("mode", "light")
+  const [subjects, setSubject] = useLocalStorage<TSubjectId[]>("66subjects", ["TGAT"])
 
   const intitalFormValues: IScheduleData = {
     subjects: subjects,
@@ -54,21 +40,8 @@ const Home: NextPage = () => {
     mode: "light",
   }
 
-  // const intitalFormValues: IScheduleData = {
-  //   subjects: subjects,
-  //   theme: theme,
-  //   font: font,
-  //   mode: mode,
-  // }
-
   const onSubmit = async (values: FormikValues) => {
     if (waiting) return
-
-    // window.localStorage.setItem("subjects", JSON.stringify(values.subjects))
-    // setSubject(values.subjects)
-    // setTheme(values.theme)
-    // setFont(values.font)
-    // setMode(values.mode)
 
     let r = (Math.random() + 1).toString(36).substring(10)
 
@@ -142,12 +115,12 @@ const Home: NextPage = () => {
                     className="underline hover:no-underline"
                     target="_blank"
                     rel="noreferrer"
-                    href="https://twitter.com/hashtag/dek65"
+                    href="https://twitter.com/hashtag/dek66"
                   >
-                    #DEK65
+                    #DEK66
                   </a>
                 </h1>
-                <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 14 กุมภาพันธ์ 2565</p>
+                <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 24 มิถุนายน 2565</p>
                 <div className="mt-4 flex flex-col space-y-4">
                   <MyAccordion header="การตกแต่ง" id="Custom">
                     <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="mode">
@@ -216,37 +189,11 @@ const Home: NextPage = () => {
                     </fieldset>
                   </MyAccordion>
 
-                  {/* <MyAccordion header="Presets" id="presets" defaultExpanded>
-                    <fieldset
-                      className="relative flex flex-wrap text-sm md:flex-row"
-                      role="group"
-                      aria-labelledby="presets"
-                    >
-                      <PresetButton
-                        subjects={values.subjects}
-                        activates={[
-                          "GEN69",
-                          "GEN49",
-                          "GEN09",
-                          "GEN19",
-                          "GEN39",
-                          "GEN29",
-                          "GEN59",
-                          "MED1",
-                          "MED2",
-                          "MED3",
-                        ]}
-                      >
-                        แพทย์
-                      </PresetButton>
-                      <PresetButton subjects={values.subjects} activates={["GAT", "PAT1", "PAT3"]}>
-                        วิศวะฯ
-                      </PresetButton>
-                    </fieldset>
-                  </MyAccordion> */}
-
-                  <MyAccordion header="GAT / PAT" id="GATPAT" defaultExpanded>
+                  <MyAccordion header="TGAT / TPAT" id="TGATTPAT" defaultExpanded>
                     <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="GATPAT">
+                      <AltPresetButton subjects={values.subjects} activates={["TGAT"]}>
+                        เลือกวิชาแพทย์ทั้งหมด
+                      </AltPresetButton>
                       {GatPatSubjectIds.map((subject) => {
                         return (
                           <Fragment key={subject}>
@@ -258,34 +205,12 @@ const Home: NextPage = () => {
                     </fieldset>
                   </MyAccordion>
 
-                  <MyAccordion header="วิชาสามัญ / กสพท." id="MED" defaultExpanded>
+                  <MyAccordion header="A Level" id="ALEVEL" defaultExpanded>
                     <fieldset className="relative flex flex-col text-sm" role="group" aria-labelledby="MED">
-                      <AltPresetButton
-                        subjects={values.subjects}
-                        activates={[
-                          "GEN69",
-                          "GEN49",
-                          "GEN09",
-                          "GEN19",
-                          "GEN39",
-                          "GEN29",
-                          "GEN59",
-                          "MED1",
-                          "MED2",
-                          "MED3",
-                        ]}
-                      >
-                        เลือกวิชาแพทย์ทั้งหมด
-                      </AltPresetButton>
-                      {MedSubjectIds.map((subject) => {
+                      {ALevelSubjectIDs.map((subject) => {
                         return (
                           <Fragment key={subject}>
-                            <Checkbox
-                              // disabled={checkDisabled(subject, values.subjects)}
-                              id={subject}
-                              name="subjects"
-                              value={subject}
-                            />
+                            <Checkbox id={subject} name="subjects" value={subject} />
                             <label htmlFor={subject}>{SubjectNames[subject]}</label>
                           </Fragment>
                         )

@@ -1,5 +1,5 @@
 import { TSubjectId, TSubjectObj } from "@types"
-import { dateSort, dateSortFunc, timeSortFunc } from "./sortTime"
+import { dateSort } from "./sortTime"
 import { SubjectMap } from "./subjects"
 
 /*
@@ -10,7 +10,6 @@ import { SubjectMap } from "./subjects"
 ]
 */
 
-// group subjects by date
 export const groupSubjects = (subjects: TSubjectId[]) => {
   const mappedSubjects: Record<string, TSubjectObj[]> = subjects
     .map((s) => SubjectMap[s])

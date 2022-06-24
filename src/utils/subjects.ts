@@ -1,129 +1,74 @@
 import { TSubjectId, TSubjectObj } from "@types"
 
-export const SubjectIDs: TSubjectId[] = [
-  "GAT",
-  "PAT1",
-  "PAT2",
-  "PAT3",
-  "PAT4",
-  "PAT5",
-  "PAT6",
-  "PAT7",
-  "GEN69",
-  "GEN49",
-  "GEN99",
-  "GEN09",
-  "GEN19",
-  "GEN39",
-  "GEN89",
-  "GEN29",
-  "GEN59",
-  "MED1",
-  "MED2",
-  "MED3",
+export const GatPatSubjectIds: TSubjectId[] = ["TGAT", "TPAT1", "TPAT2", "TPAT3", "TPAT4", "TPAT5"]
+
+export const ALevelSubjectIDs: TSubjectId[] = [
+  "AL_BIO",
+  "AL_PHY",
+  "AL_SCI",
+  "AL_THAI",
+  "AL_SOC",
+  "AL_MATH1",
+  "AL_MATH2",
+  "AL_ENG",
+  "AL_CHEM",
+  "AL_FRENCH",
+  "AL_GERMAN",
+  "AL_JAPANESE",
+  "AL_KOREAN",
+  "AL_CHINESE",
+  "AL_BALIAN",
 ]
-
-export const GatPatSubjectIds: TSubjectId[] = ["GAT", "PAT1", "PAT2", "PAT3", "PAT4", "PAT5", "PAT6", "PAT7"]
-
-export const MedSubjectIds: TSubjectId[] = [
-  "GEN69",
-  "GEN49",
-  "GEN99",
-  "GEN09",
-  "GEN19",
-  "GEN39",
-  "GEN89",
-  "GEN29",
-  "GEN59",
-  "MED1",
-  "MED2",
-  "MED3",
-]
-
-export const SubjectMap: Record<TSubjectId, TSubjectObj> = {
-  /* GAT/PAT */
-  GAT: { date: "03/12", from: "08.30", to: "11.30", text: "GAT ความถนัดทั่วไป" },
-  PAT1: { date: "03/12", from: "13.00", to: "16.00", text: "PAT 1 ความถนัดทางคณิตศาสตร์" },
-  PAT2: { date: "03/13", from: "08.30", to: "11.30", text: "PAT 2 ความถนัดทางวิทยาศาสตร์" },
-  PAT3: { date: "03/14", from: "08.30", to: "11.30", text: "PAT 3 ความถนัดทางวิศวกรรมศาสตร์" },
-  PAT4: { date: "03/14", from: "13.00", to: "16.00", text: "PAT 4 ความถนัดทางสถาปัตยกรรมศาสตร์" },
-  PAT5: { date: "03/13", from: "13.00", to: "16.00", text: "PAT 5 ความถนัดทางวิชาชีพครู" },
-  PAT6: { date: "03/15", from: "08.30", to: "11.30", text: "PAT 6 ความถนัดทางศิลกรรมศาสตร์" },
-  PAT7: { date: "03/15", from: "13.00", to: "16.00", text: "PAT 7 ความถนัดทางภาษา" },
-  /* วิชาสามัญ */
-  GEN69: { date: "03/19", from: "08.30", to: "10.00", text: "วิชาสามัญ ชีววิทยา" },
-  /* - same */
-  GEN49: { date: "03/19", from: "11.00", to: "12.30", text: "วิชาสามัญ ฟิสิกส์" },
-  GEN99: { date: "03/19", from: "11.00", to: "12.30", text: "วิชาสามัญ วิทยาศาสตร์" },
-  /* - /same */
-  GEN09: { date: "03/19", from: "13.30", to: "15.00", text: "วิชาสามัญ ภาษาไทย" },
-  GEN19: { date: "03/19", from: "15.30", to: "17.00", text: "วิชาสามัญ สังคมศึกษา" },
-  /* - same */
-  GEN39: { date: "03/20", from: "08.30", to: "10.00", text: "วิชาสามัญ คณิตศาสตร์ 1" },
-  GEN89: { date: "03/20", from: "08.30", to: "10.00", text: "วิชาสามัญ คณิตศาสตร์ 2" },
-  /* - /same */
-  GEN29: { date: "03/20", from: "11.00", to: "12.30", text: "วิชาสามัญ ภาษาอังกฤษ" },
-  GEN59: { date: "03/20", from: "13.30", to: "15.00", text: "วิชาสามัญ เคมี" },
-  /* กสพท. */
-  MED1: { date: "03/26", from: "08.30", to: "09.45", text: "วิชาเฉพาะแพทย์ฉบับที่ 1 (เชาวน์ปัญญา)" },
-  MED2: { date: "03/26", from: "09.55", to: "10.55", text: "วิชาเฉพาะแพทย์ฉบับที่ 2 (จริยธรรมทางการแพทย์)" },
-  MED3: { date: "03/26", from: "11.30", to: "12.30", text: "วิชาเฉพาะแพทย์ฉบับที่ 3 (ความคิดเชื่อมโยง)" },
-}
 
 export const SubjectNames: Record<TSubjectId, string> = {
-  GAT: "GAT ความถนัดทั่วไป",
-  PAT1: "PAT 1 ความถนัดทางคณิตศาสตร์",
-  PAT2: "PAT 2 ความถนัดทางวิทยาศาสตร์",
-  PAT3: "PAT 3 ความถนัดทางวิศวกรรมศาสตร์",
-  PAT4: "PAT 4 ความถนัดทางสถาปัตยกรรมศาสตร์",
-  PAT5: "PAT 5 ความถนัดทางวิชาชีพครู",
-  PAT6: "PAT 6 ความถนัดทางศิลกรรมศาสตร์",
-  PAT7: "PAT 7 ความถนัดทางภาษา",
-  GEN69: "69 วิชาสามัญ ชีววิทยา",
-  GEN49: "49 วิชาสามัญ ฟิสิกส์",
-  GEN99: "99 วิชาสามัญ วิทยาศาสตร์",
-  GEN09: "09 วิชาสามัญ ภาษาไทย",
-  GEN19: "19 วิชาสามัญ สังคมศึกษา",
-  GEN39: "39 วิชาสามัญ คณิตศาสตร์ 1",
-  GEN89: "89 วิชาสามัญ คณิตศาสตร์ 2",
-  GEN29: "29 วิชาสามัญ ภาษาอังกฤษ",
-  GEN59: "59 วิชาสามัญ เคมี",
-  MED1: "วิชาเฉพาะแพทย์ฉบับที่ 1 (เชาวน์ปัญญา)",
-  MED2: "วิชาเฉพาะแพทย์ฉบับที่ 2 (จริยธรรมทางการแพทย์)",
-  MED3: "วิชาเฉพาะแพทย์ฉบับที่ 3 (ความคิดเชื่อมโยง)",
+  TGAT: "90 TGAT ความถนัดทั่วไป",
+  TPAT1: "10 TPAT 1 วิชาเฉพาะ กสพท.",
+  TPAT2: "20 TPAT 2 ความถนัดทางศิลปกรรมศาสตร์",
+  TPAT3: "30 TPAT 3 ความถนัดทางวิทยาศาสตร์ เทคโนโลยี วิศวกรรมศาสตร์",
+  TPAT4: "40 TPAT 4 ความถนัดทางสถาปัตยกรรมศาสตร์",
+  TPAT5: "50 TPAT 5 ความถนัดทางครุศาสตร์-ศึกษาศาสตร์",
+  AL_BIO: "66 ชีววิทยา",
+  AL_PHY: "64 ฟิสิกส์",
+  AL_THAI: "81 ภาษาไทย",
+  AL_SOC: "70 สังคมศึกษา",
+  AL_MATH1: "61 คณิตศาสตร์ประยุกต์ 1 (พื้ันฐาน + เพิ่มเติม)",
+  AL_ENG: "82 ภาษาอังกฤษ",
+  AL_CHEM: "65 เคมี",
+  AL_MATH2: "62 คณิตศาสตร์ประยุกต์ 2 (พื้นฐาน)",
+  AL_SCI: "63 วิทยาศาสตร์ประยุกต์",
+  AL_FRENCH: "83 ภาษาฝรั่งเศส",
+  AL_GERMAN: "84 ภาษาเยอรมัน",
+  AL_JAPANESE: "85 ภาษาญี่ปุ่น",
+  AL_KOREAN: "86 ภาษาเกาหลี",
+  AL_CHINESE: "87 ภาษาจีน",
+  AL_BALIAN: "88 ภาษาบาลี",
 }
 
-// export const TimeSchedule = {
-//   "03/12": [
-//     ["GAT", "08.30", "11.30"],
-//     ["PAT1", "13.00", "16.00"],
-//   ],
-//   "03/13": [
-//     ["PAT2", "08.30", "11.30"],
-//     ["PAT5", "13.00", "16.00"],
-//   ],
-//   "03/14": [
-//     ["PAT3", "08.30", "11.30"],
-//     ["PAT4", "13.00", "16.00"],
-//   ],
-//   "03/15": [
-//     ["PAT6", "08.30", "11.30"],
-//     ["PAT7", "13.00", "16.00"],
-//   ],
-//   "03/19": [
-//     ["GEN69", "08.30", "10.00"],
-//     ["GEN49|99", "11.00", "12.00"],
-//     ["GEN09", "13.00", "15.00"],
-//     ["GEN19", "15.30", "17.00"],
-//   ],
-//   "03/20": [
-//     ["GEN39|89", "08.30", "10.00"],
-//     ["GEN29", "11.00", "12.30"],
-//     ["GEN59", "13.30", "15.00"],
-//   ],
-//   "03/26": [
-//     ["MED1", "08.30", "09.45"],
-//     ["MED2", "09.55", "10.55"],
-//     ["MED3", "11.30", "12.30"],
-//   ],
-// }
+export const SubjectMap: Record<TSubjectId, TSubjectObj> = {
+  /* TGAT/TPAT */
+  TGAT: { date: "10/12/2022", from: "09.00", to: "12.00", text: SubjectNames["TGAT"] },
+  TPAT3: { date: "10/12/2022", from: "13.00", to: "16.00", text: SubjectNames["TPAT3"] },
+  TPAT5: { date: "11/12/2022", from: "09.00", to: "12.00", text: SubjectNames["TPAT5"] },
+  TPAT2: { date: "11/12/2022", from: "13.00", to: "16.00", text: SubjectNames["TPAT2"] },
+  TPAT4: { date: "12/12/2022", from: "09.00", to: "12.00", text: SubjectNames["TPAT4"] },
+  TPAT1: { date: "17/12/2022", from: "08.30", to: "12.30", text: SubjectNames["TPAT1"] },
+  /* A Level */
+  AL_BIO: { date: "18/03/2023", from: "08.30", to: "10.00", text: SubjectNames["AL_BIO"] },
+  AL_PHY: { date: "18/03/2023", from: "11.00", to: "12.30", text: SubjectNames["AL_PHY"] },
+  AL_THAI: { date: "18/03/2023", from: "13.30", to: "15.00", text: SubjectNames["AL_THAI"] },
+  AL_SOC: { date: "18/03/2023", from: "15.30", to: "17.00", text: SubjectNames["AL_SOC"] },
+  /* - 2nd day */
+  AL_MATH1: { date: "19/03/2023", from: "08.30", to: "10.00", text: SubjectNames["AL_MATH1"] },
+  AL_ENG: { date: "19/03/2023", from: "11.00", to: "12.30", text: SubjectNames["AL_ENG"] },
+  AL_CHEM: { date: "19/03/2023", from: "13.30", to: "15.00", text: SubjectNames["AL_CHEM"] },
+  /* - 3rd day */
+  AL_MATH2: { date: "20/03/2023", from: "08.30", to: "10.00", text: SubjectNames["AL_MATH2"] },
+  AL_SCI: { date: "20/03/2023", from: "11.00", to: "12.30", text: SubjectNames["AL_SCI"] },
+  /* Same */
+  AL_FRENCH: { date: "20/03/2023", from: "13.30", to: "15.00", text: SubjectNames["AL_FRENCH"] },
+  AL_GERMAN: { date: "20/03/2023", from: "13.30", to: "15.00", text: SubjectNames["AL_GERMAN"] },
+  AL_JAPANESE: { date: "20/03/2023", from: "13.30", to: "15.00", text: SubjectNames["AL_JAPANESE"] },
+  AL_KOREAN: { date: "20/03/2023", from: "13.30", to: "15.00", text: SubjectNames["AL_KOREAN"] },
+  AL_CHINESE: { date: "20/03/2023", from: "13.30", to: "15.00", text: SubjectNames["AL_CHINESE"] },
+  AL_BALIAN: { date: "20/03/2023", from: "13.30", to: "15.00", text: SubjectNames["AL_BALIAN"] },
+}
