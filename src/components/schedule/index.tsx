@@ -108,7 +108,7 @@ export const Schedule: FC<{
       )}
       <div className={styles["body-content"]}>
         <div className={styles["heading-text"]}>
-          <h2 className={styles["text"]}>ตารางสอบรอบ 3 TCAS DEK66</h2>
+          <h2 className={styles["text"]}>ตารางสอบ TCAS รอบ 3 DEK66</h2>
         </div>
         <div className={styles["day-card-list"]}>
           {Object.keys(mappedSubjects).map((date, i) => {
