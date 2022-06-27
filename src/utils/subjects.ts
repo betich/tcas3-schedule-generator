@@ -41,7 +41,7 @@ export const SubjectNames: Record<TSubjectId, string> = {
   AL_PHY: "A-Level ฟิสิกส์",
   AL_THAI: "A-Level ภาษาไทย",
   AL_SOC: "A-Level สังคมศึกษา",
-  AL_MATH1: "A-Level คณิตศาสตร์ประยุกต์ 1 (พื้ันฐาน + เพิ่มเติม)",
+  AL_MATH1: "A-Level คณิตศาสตร์ประยุกต์ 1\n(พื้ันฐาน + เพิ่มเติม)",
   AL_ENG: "A-Level ภาษาอังกฤษ",
   AL_CHEM: "A-Level เคมี",
   AL_MATH2: "A-Level คณิตศาสตร์ประยุกต์ 2 (พื้นฐาน)",

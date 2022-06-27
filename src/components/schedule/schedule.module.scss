@@ -89,6 +89,8 @@ $py-body: 85;
     grid-template-columns: 1fr 3.5fr;
     grid-gap: calc(var(--width) / ((var(--gap) + 200)));
     padding-bottom: calc(var(--width) / 150);
+    white-space: pre-wrap;
+    line-height: 1.618;
   }
 
   > .schedule-text-container > .time {
