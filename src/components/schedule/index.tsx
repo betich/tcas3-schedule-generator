@@ -69,7 +69,7 @@ export const Schedule: FC<{
           className="absolute top-0 left-0"
         >
           <div className="reltive">
-            <Image alt="ตารางสอบ TCAS รอบ 3 DEK66" priority={true} src="/assets/studybg.png" layout="fill" />
+            <Image alt="ตารางสอบ TCAS รอบ 3 DEK67" priority={true} src="/assets/studybg.png" layout="fill" />
           </div>
         </div>
       )}
@@ -108,7 +108,7 @@ export const Schedule: FC<{
       )}
       <div className={styles["body-content"]}>
         <div className={styles["heading-text"]}>
-          <h2 className={styles["text"]}>ตารางสอบ TCAS รอบ 3 DEK66</h2>
+          <h2 className={styles["text"]}>ตารางสอบ TCAS รอบ 3 #DEK67</h2>
         </div>
         <div className={styles["day-card-list"]}>
           {Object.keys(mappedSubjects).map((date, i) => {
