@@ -115,12 +115,12 @@ const Home: NextPage = () => {
                     className="underline hover:no-underline"
                     target="_blank"
                     rel="noreferrer"
-                    href="https://twitter.com/hashtag/dek66"
+                    href="https://twitter.com/hashtag/dek67"
                   >
-                    #DEK66
+                    #DEK67
                   </a>
                 </h1>
-                <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 24 มิถุนายน 2565</p>
+                <p className="mt-6 mb-4 text-xs font-light">* ข้อมูล ณ วันที่ 27 มิถุนายน 2566</p>
                 <div className="mt-4 flex flex-col space-y-4">
                   <MyAccordion header="การตกแต่ง" id="Custom">
                     <fieldset className="relative mb-4 flex flex-col text-sm" role="group" aria-labelledby="mode">
